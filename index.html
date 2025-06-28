@@ -28,6 +28,7 @@
             background: var(--snow);
             color: var(--charcoal);
             overflow-x: hidden;
+            line-height: 1.6;
         }
         
         .container {
@@ -53,13 +54,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         
         .logo {
-            width: 150px;
             display: flex;
             align-items: center;
             gap: 15px;
+            max-width: 200px;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
         }
         
         .logo-text span {
@@ -123,6 +137,35 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
         
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(9px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-9px);
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)), 
@@ -136,6 +179,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            padding-top: 100px;
         }
         
         .hero::before {
@@ -154,11 +198,14 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: clamp(2.2rem, 6vw, 4rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -171,16 +218,19 @@
         }
         
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin: 0 auto 30px;
             max-width: 600px;
             line-height: 1.6;
+            padding: 0 15px;
         }
         
         .hero-buttons {
             display: flex;
             gap: 15px;
             margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .btn-secondary {
@@ -202,11 +252,12 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            padding: 0 15px;
         }
         
         .section-title h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--royal-blue);
             position: relative;
             display: inline-block;
@@ -251,7 +302,7 @@
         }
         
         .service-header h3 {
-            font-size: 1.6rem;
+            font-size: clamp(1.4rem, 3vw, 1.6rem);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -311,19 +362,21 @@
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            padding: 0 15px;
         }
         
         .ba-title {
             color: var(--gold);
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
             margin-bottom: 15px;
         }
         
         .ba-subtitle {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             max-width: 700px;
             margin: 0 auto 50px;
             opacity: 0.9;
+            padding: 0 15px;
         }
         
         .comparison-grid {
@@ -356,7 +409,7 @@
         }
         
         .comparison-header h4 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             color: var(--gold);
         }
         
@@ -446,13 +499,13 @@
         }
         
         .benefit-icon {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             color: var(--gold);
             margin-bottom: 25px;
         }
         
         .benefit-card h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
             margin-bottom: 15px;
             color: var(--royal-blue);
         }
@@ -460,6 +513,7 @@
         .benefit-card p {
             color: #666;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         /* CTA Section */
@@ -476,16 +530,17 @@
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .cta-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             margin-bottom: 20px;
         }
         
         .cta-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
@@ -497,19 +552,20 @@
             border: 2px solid var(--gold);
             border-radius: 10px;
             padding: 20px;
-            margin: 40px 0;
+            margin: 40px auto;
             display: inline-block;
+            max-width: 90%;
         }
         
         .winter-offer h4 {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
             color: var(--gold);
             margin-bottom: 10px;
         }
         
         /* Footer */
         footer {
-            background: var(--charcoal);
+            background: var(--royal-blue);
             color: white;
             padding: 70px 0 30px;
         }
@@ -521,8 +577,12 @@
             margin-bottom: 50px;
         }
         
+        .footer-col {
+            padding: 0 15px;
+        }
+        
         .footer-col h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
@@ -607,51 +667,91 @@
         
         /* Responsive */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.4rem;
+            .services-grid, .comparison-grid, .benefits-grid {
+                gap: 20px;
             }
         }
         
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
             }
             
             nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--royal-blue);
+                flex-direction: column;
+                align-items: center;
                 justify-content: center;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
+            nav ul.active {
+                right: 0;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .cta-button.header-cta {
+                display: none;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .hero {
+                min-height: 600px;
             }
             
             .hero-buttons {
                 flex-direction: column;
+                align-items: center;
             }
             
-            .cta-title {
-                font-size: 2.2rem;
+            .hero-buttons .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-grid {
+                gap: 30px;
             }
         }
         
         @media (max-width: 576px) {
-            .logo-text {
-                font-size: 1.5rem;
+            .logo {
+                max-width: 160px;
+            }
+            .header-container{
+                padding-right: 0;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .logo img {
+                height: 60px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid, .comparison-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding-top: 90px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -662,27 +762,56 @@
         <div class="container header-container">
             <a href="#" class="logo" style="text-decoration: none;">
                 <img src="images/logo.png" alt="King Maths Construction" style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
-               
             </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <nav>
-                <ul>
+                <ul id="nav-menu">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#why-us">Why Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="cta-button" onclick="window.location.href='tel:0632752856'">Get Free Estimate</button>
+            <button class="cta-button header-cta" onclick="window.location.href='tel:0632752856'">Get Free Estimate</button>
         </div>
+        <style>
+            @media (max-width: 768px) {
+                .header-container {
+                    flex-direction: row;
+                    align-items: center !important;
+                    justify-content: space-between !important;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+                .logo {
+                   
+                    margin-bottom: 8px;
+                    justify-content: center;
+                }
+                .menu-toggle {
+                    margin-bottom: 8px;
+                }
+                nav ul {
+                    margin-top: 12px;
+                    margin-bottom: 12px;
+                }
+            }
+        </style>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" style="padding-top: 100px;">
-        <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh; min-height: 700px;">
-            <div class="hero-content" style="text-align: center; width: 100%;">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
                 <h1>Winter-Ready Your Property with <span>Royal-Grade Protection</span></h1>
-                <p style="text-align: center; margin: 0 auto; max-width: 600px;">• Family-Safe Coatings • Painting • Renovations • Waterproofing • Mold Cleaning • Crack & Leak Sealing •</p>
-                <div class="hero-buttons" style="justify-content: center;">
+                <p>• Family-Safe Coatings • Painting • Renovations • Waterproofing • Mold Cleaning • Crack & Leak Sealing •</p>
+                <div class="hero-buttons">
                     <button class="cta-button" onclick="window.location.href='tel:0632752856'">Book Winter Inspection</button>
                     <button class="cta-button btn-secondary" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">View Services</button>
                 </div>
@@ -697,7 +826,7 @@
                 <h2>Winter Protection Services</h2>
             </div>
             
-            <div class="services-grid" style="justify-items: center;">
+            <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card animate-on-scroll">
                     <div class="service-header">
@@ -869,7 +998,7 @@
                     <p>Book any two services and get 15% off + free gutter inspection!</p>
                 </div>
                 
-                <button class="cta-button"onclick="window.location.href='tel:0632752856'">Schedule Free Inspection</button>
+                <button class="cta-button" onclick="window.location.href='tel:0632752856'">Schedule Free Inspection</button>
             </div>
         </div>
     </section>
@@ -925,12 +1054,29 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Kingmaths Construction. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> for winter protection</p>
+                <p>&copy; 2025 Kingmaths Construction. All rights reserved. | Designed by Koffee Solutions <i class="fas fa-heart" style="color: var(--gold);"></i> for winter protection</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a nav link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
         // Animation on scroll functionality
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -957,10 +1103,12 @@
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
