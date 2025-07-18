@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingmaths Construction | Project Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --royal-blue: #0a2e5a;
+            --gold: #d4af37;
+            --light-gold: #f0e6d2;
+            --crimson: #b22222;
+            --snow: #f8f9fa;
+            --charcoal: #333;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--snow);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--royal-blue) 0%, #041e42 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid var(--gold);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 200px;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gold);
+            color: var(--royal-blue);
+            border: none;
+            padding: 12px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #e6c447;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Gallery Hero */
+        .gallery-hero {
+            background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)), 
+                         url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1931&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        .gallery-hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .gallery-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-hero h1 span {
+            color: var(--gold);
+        }
+        
+        .gallery-hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin: 0 auto 30px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        /* Gallery Controls */
+        .gallery-controls {
+            padding: 40px 0 20px;
+            background: var(--snow);
+            text-align: center;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--royal-blue);
+            color: white;
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--light-gold);
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            padding-left: 45px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--royal-blue);
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            padding: 40px 0 80px;
+            background: var(--snow);
+        }
+        
+        .masonry-grid {
+            columns: 3;
+            column-gap: 20px;
+        }
+        
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 46, 90, 0.9), transparent);
+            padding: 20px;
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-info {
+            opacity: 1;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-info .category {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--royal-blue);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            background: var(--gold);
+            color: var(--royal-blue);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-nav:hover {
+            background: var(--gold);
+            color: var(--royal-blue);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--royal-blue);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col {
+            padding: 0 15px;
+        }
+        
+        .footer-col h3 {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .footer-contact i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .masonry-grid {
+                columns: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                columns: 1;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .gallery-hero {
+                height: 40vh;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .gallery-info {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .gallery-info h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" style="text-decoration: none;">
+                <img src="/images/logo.png" alt="King Maths Construction" style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav>
+                <ul id="nav-menu">
+                   <li><a href="/#services">Services</a></li>
+                    <li><a href="/portfolio/">Portfolio</a></li>
+                    <li><a href="/gallery/">Gallery</a></li>
+                    <li><a href="/#why-us">Why Us</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free Estimate</button>
+        </div>
+        <style>
+            @media (max-width: 768px) {
+                .header-container {
+                    flex-direction: column;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    gap:0;
+                }
+                .logo {
+                   
+                    margin-bottom: 8px;
+                    justify-content: center;
+                }
+                .menu-toggle {
+                    margin-bottom: 8px;
+                }
+                nav ul {
+                    margin-top: 12px;
+                    margin-bottom: 12px;
+                }
+            }
+        </style>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="gallery-hero-content">
+            <h1>Our <span>Royal Gallery</span></h1>
+            <p>Showcasing the craftsmanship and quality of Kingmaths Construction projects</p>
+        </div>
+    </section>
+
+    <!-- Gallery Controls -->
+    <section class="gallery-controls">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="painting">Painting</button>
+                <button class="filter-btn" data-filter="waterproofing">Waterproofing</button>
+                <button class="filter-btn" data-filter="tiling">Tiling</button>
+                <button class="filter-btn" data-filter="roofing">Roofing</button>
+                <button class="filter-btn" data-filter="renovation">Renovation</button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search projects...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-grid">
+        <div class="container">
+            <div class="masonry-grid">
+
+
+                <!-- Painting Projects -->
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="images/leak.png" alt="Leaking Toilet Ceiling">
+                    <div class="gallery-info">
+                        <h3>Leaking Toilet Ceiling</h3>
+                        <p>Premium waterproofing solutions for your home</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Interior Painting">
+                    <div class="gallery-info">
+                        <h3>Modern Living Room</h3>
+                        <p>Premium interior painting with family-safe coatings</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="painting">
+                    <img src="images/exterior 2.jpg" alt="Exterior Home Painting">
+                    <div class="gallery-info">
+                        <h3>Double Storey Exterior Painting</h3>
+                        <p>High-quality exterior painting for modern homes</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="images/IMG-20250627-WA0016.jpg" alt="Tiling Project">
+                    <div class="gallery-info">
+                        <h3>De Kuile Painting</h3>
+                        <p>High-quality painting for estates</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Roof Waterproofing">
+                    <div class="gallery-info">
+                        <h3>Flat Roof Membrane</h3>
+                        <p>Premium waterproofing membrane installation</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater Exterior">
+                    <div class="gallery-info">
+                        <h3>Bridgewater One</h3>
+                        <p>Interior painting project showcasing rich colors and textures</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item" data-category="roofing">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Roof Coating">
+                    <div class="gallery-info">
+                        <h3>Protective Roof Coating</h3>
+                        <p>Advanced sealant application</p>
+                        <span class="category">Roofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="images/bridgewater one/465682013_594520159577981_7034951761903983430_n.jpg" alt="Interior painting Bridgewater Project">
+                    <div class="gallery-info">
+                        <h3>Bridgewater One</h3>
+                        <p>Interior painting project showcasing rich colors and textures</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="images/bridgewater one/465911545_594520182911312_8965199448761407890_n.jpg" alt="Exterior Project">
+                    <div class="gallery-info">
+                        <h3>Bridgewater One</h3>
+                        <p>Exterior Painting</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="images/bridgewater one/465977659_594500402913290_6966256726158886044_n.jpg" alt="Painting Project">
+                    <div class="gallery-info">
+                        <h3>Bridgewater One</h3>
+                        <p>High-quality exterior painting for modern spaces</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tiling">
+                    <img src="images/tiling.png" alt="Tiling Project">
+                    <div class="gallery-info">
+                        <h3>Home Bathroom Tiling</h3>
+                        <p>High-quality tiling for modern bathrooms</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tiling">
+                    <img src="images/tiling 2.png" alt="Tiling">
+                    <div class="gallery-info">
+                        <h3>Shower Tiling</h3>
+                        <p>Expert tiling solutions for your home</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="roofing">
+                    <img src="images/roof.png" alt="Roof Repair">
+                    <div class="gallery-info">
+                        <h3>Roof Repair and Maintenance</h3>
+                        <p>Expert roofing solutions for your home</p>
+                        <span class="category">Roofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Mold Remediation">
+                    <div class="gallery-info">
+                        <h3>Mold Remediation Project</h3>
+                        <p>After mold removal</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-nav lightbox-prev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="Gallery Image">
+        </div>
+        <div class="lightbox-nav lightbox-next">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Kingmaths Construction</h3>
+                    <p>Providing royal-grade protection for homes and businesses since 2010. Family-owned and operated with a commitment to excellence.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/27659823727"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>
+                                4 Bridal Cl, Tyger Waterfront, Cape Town, 7530, Western Cape
+                                <br>
+                                <iframe
+                                    src="https://www.google.com/maps?q=4+Bridal+Cl,+Tyger+Waterfront,+Cape+Town,+7530,+Western+Cape&output=embed"
+                                    width="100%" height="120" style="border:0; border-radius:8px; margin-top:8px;"
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+27659823727" style="color: var(--gold); text-decoration: underline;">+27 65 982 3727</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:support@kingmaths.com" style="color: var(--gold); text-decoration: underline;">support@kingmaths.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8AM - 4PM, Sat: 9AM - 3PM</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-services">
+                        <li>Royal Paint</li>
+                        <li>Mold Defense</li>
+                        <li>The King's Shield</li>
+                        <li>The Crown Upgrade</li>
+                        <li>Winter Protection Packages</li>
+                        <li>Emergency Repairs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('search-input');
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = document.querySelector('.lightbox-content img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            
+            let currentImageIndex = 0;
+            const images = Array.from(galleryItems);
+            
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                galleryItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Lightbox functionality
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').getAttribute('src');
+                    lightboxImg.setAttribute('src', imgSrc);
+                    currentImageIndex = index;
+                    lightbox.classList.add('active');
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            // Navigation in lightbox
+            lightboxPrev.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
+                lightboxImg.setAttribute('src', imgSrc);
+            });
+            
+            lightboxNext.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
+                lightboxImg.setAttribute('src', imgSrc);
+            });
+            
+            // Close lightbox when clicking outside
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        lightbox.classList.remove('active');
+                    } else if (e.key === 'ArrowLeft') {
+                        lightboxPrev.click();
+                    } else if (e.key === 'ArrowRight') {
+                        lightboxNext.click();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
