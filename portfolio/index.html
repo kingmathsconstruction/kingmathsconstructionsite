@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kingmaths Construction | Commercial Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
     <style>
         :root {
@@ -17,13 +20,13 @@
             --charcoal: #333;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--snow);
@@ -31,13 +34,13 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
             background: linear-gradient(135deg, var(--royal-blue) 0%, #041e42 100%);
@@ -50,43 +53,43 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
             max-width: 200px;
         }
-        
+
         .logo img {
             height: 70px;
             width: auto;
         }
-        
+
         .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             color: white;
             font-weight: 700;
         }
-        
+
         .logo-text span {
             color: var(--gold);
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 30px;
         }
-        
+
         nav a {
             color: white;
             text-decoration: none;
@@ -97,11 +100,11 @@
             transition: var(--transition);
             position: relative;
         }
-        
+
         nav a:hover {
             color: var(--gold);
         }
-        
+
         nav a::after {
             content: '';
             position: absolute;
@@ -112,11 +115,11 @@
             background: var(--gold);
             transition: var(--transition);
         }
-        
+
         nav a:hover::after {
             width: 100%;
         }
-        
+
         .cta-button {
             background: var(--gold);
             color: var(--royal-blue);
@@ -131,17 +134,48 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
-        
+
         .cta-button:hover {
             background: #e6c447;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
-        
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(9px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-9px);
+        }
+
         /* Portfolio Hero */
         .portfolio-hero {
-            background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)), 
-                         url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1931&q=80');
+            background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)),
+                url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1931&q=80');
             background-size: cover;
             background-position: center;
             min-height: calc(100vh - 103px);
@@ -154,7 +188,7 @@
             padding-top: 20px;
             text-align: center;
         }
-        
+
         .portfolio-hero-content {
             max-width: 800px;
             position: relative;
@@ -162,7 +196,7 @@
             margin: 0 auto;
             padding: 40px 20px 0;
         }
-        
+
         .portfolio-hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.2rem, 6vw, 3.5rem);
@@ -171,30 +205,30 @@
             margin-bottom: 20px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .portfolio-hero h1 span {
             color: var(--gold);
         }
-        
+
         .portfolio-hero p {
             font-size: clamp(1rem, 3vw, 1.3rem);
             margin: 0 auto 30px;
             max-width: 700px;
             line-height: 1.6;
         }
-        
+
         /* Portfolio Section */
         .portfolio-section {
             padding: 80px 0;
             background: var(--snow);
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 60px;
             padding: 0 15px;
         }
-        
+
         .section-title h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
@@ -202,7 +236,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -213,13 +247,13 @@
             height: 4px;
             background: var(--gold);
         }
-        
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
-        
+
         .portfolio-card {
             background: white;
             border-radius: 10px;
@@ -228,29 +262,29 @@
             transition: var(--transition);
             position: relative;
         }
-        
+
         .portfolio-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
-        
+
         .portfolio-image {
             height: 250px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .portfolio-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        
+
         .portfolio-card:hover .portfolio-image img {
             transform: scale(1.05);
         }
-        
+
         .portfolio-badge {
             position: absolute;
             top: 20px;
@@ -264,17 +298,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .portfolio-content {
             padding: 25px;
         }
-        
+
         .portfolio-content h3 {
             font-size: clamp(1.4rem, 3vw, 1.6rem);
             margin-bottom: 15px;
             color: var(--royal-blue);
         }
-        
+
         .portfolio-location {
             display: flex;
             align-items: center;
@@ -283,18 +317,18 @@
             color: var(--gold);
             font-weight: 600;
         }
-        
+
         .portfolio-services {
             margin: 20px 0;
         }
-        
+
         .portfolio-services li {
             margin-bottom: 12px;
             padding-left: 25px;
             position: relative;
             list-style: none;
         }
-        
+
         .portfolio-services li::before {
             content: '\f00c';
             font-family: 'Font Awesome 5 Free';
@@ -303,7 +337,7 @@
             left: 0;
             color: var(--gold);
         }
-        
+
         .portfolio-link {
             display: inline-block;
             color: var(--royal-blue);
@@ -312,16 +346,16 @@
             margin-top: 15px;
             transition: var(--transition);
         }
-        
+
         .portfolio-link:hover {
             color: var(--gold);
             text-decoration: underline;
         }
-        
+
         .portfolio-link i {
             margin-left: 5px;
         }
-        
+
         /* Testimonials */
         .testimonials {
             padding: 80px 0;
@@ -329,7 +363,7 @@
             color: white;
             position: relative;
         }
-        
+
         .testimonials::before {
             content: '';
             position: absolute;
@@ -340,14 +374,14 @@
             background: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
             opacity: 0.1;
         }
-        
+
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-        
+
         .testimonial-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
@@ -355,14 +389,14 @@
             backdrop-filter: blur(5px);
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
-        
+
         .testimonial-header {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+
         .testimonial-avatar {
             width: 60px;
             height: 60px;
@@ -370,51 +404,51 @@
             overflow: hidden;
             border: 2px solid var(--gold);
         }
-        
+
         .testimonial-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .testimonial-author h4 {
             font-size: 1.2rem;
             margin-bottom: 5px;
         }
-        
+
         .testimonial-author p {
             color: var(--light-gold);
             font-size: 0.9rem;
         }
-        
+
         .testimonial-stars {
             color: var(--gold);
             margin-bottom: 15px;
         }
-        
+
         /* Call to Action */
         .portfolio-cta {
             padding: 100px 0;
-            background: linear-gradient(rgba(10, 46, 90, 0.9), rgba(10, 46, 90, 0.9)), 
-                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(rgba(10, 46, 90, 0.9), rgba(10, 46, 90, 0.9)),
+                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
         }
-        
+
         .portfolio-cta-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .portfolio-cta h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
             margin-bottom: 20px;
         }
-        
+
         .portfolio-cta p {
             font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 40px;
@@ -422,32 +456,32 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         /* Footer */
         footer {
             background: var(--royal-blue);
             color: white;
             padding: 70px 0 30px;
         }
-        
+
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 50px;
         }
-        
+
         .footer-col {
             padding: 0 15px;
         }
-        
+
         .footer-col h3 {
             font-size: clamp(1.2rem, 3vw, 1.4rem);
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-col h3::after {
             content: '';
             position: absolute;
@@ -457,26 +491,26 @@
             height: 3px;
             background: var(--gold);
         }
-        
+
         .footer-contact li {
             margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
         }
-        
+
         .footer-contact i {
             color: var(--gold);
             font-size: 1.2rem;
             min-width: 20px;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-links a {
             display: flex;
             align-items: center;
@@ -488,12 +522,12 @@
             color: white;
             transition: var(--transition);
         }
-        
+
         .social-links a:hover {
             background: var(--gold);
             transform: translateY(-5px);
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -501,34 +535,61 @@
             font-size: 0.9rem;
             opacity: 0.7;
         }
-        
+
         /* Responsive */
         @media (max-width: 992px) {
             .portfolio-grid {
                 gap: 30px;
             }
         }
-        
+
         @media (max-width: 768px) {
+
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--royal-blue);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .cta-button.header-cta {
+                display: none;
+            }
+
             .portfolio-hero {
                 height: 60vh;
                 min-height: 400px;
             }
-            
+
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-            
-            nav ul {
-                display: none;
-            }
         }
-        
+
         @media (max-width: 576px) {
             .portfolio-hero {
                 height: 50vh;
             }
-            
+
             .portfolio-badge {
                 font-size: 0.8rem;
                 padding: 6px 12px;
@@ -536,13 +597,15 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
-        <!-- Header -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/images/logo.png" alt="King Maths Construction" style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
+                <img src="/images/logo.png" alt="King Maths Construction"
+                    style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
             </a>
 
             <div class="menu-toggle" id="mobile-menu">
@@ -560,7 +623,8 @@
                     <li><a href="/#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free Estimate</button>
+            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free
+                Estimate</button>
         </div>
         <style>
             @media (max-width: 768px) {
@@ -570,16 +634,19 @@
                     justify-content: center !important;
                     padding-top: 10px;
                     padding-bottom: 10px;
-                    gap:0;
+                    gap: 0;
                 }
+
                 .logo {
-                   
+
                     margin-bottom: 8px;
                     justify-content: center;
                 }
+
                 .menu-toggle {
                     margin-bottom: 8px;
                 }
+
                 nav ul {
                     margin-top: 12px;
                     margin-bottom: 12px;
@@ -593,7 +660,9 @@
         <div class="portfolio-hero-content">
             <h1>Royal-Grade <span>Commercial Projects</span></h1>
             <p>Showcasing our premium construction services for prestigious developments across Cape Town</p>
-            <button class="cta-button" onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })">View Our Work</button>
+            <button class="cta-button"
+                onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })">View Our
+                Work</button>
         </div>
     </section>
 
@@ -604,8 +673,8 @@
                 <h2>Our Commercial Portfolio</h2>
             </div>
 
-            
-            
+
+
             <div class="portfolio-grid">
 
                 <!-- Project 4 -->
@@ -620,8 +689,9 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Century City</span>
                         </div>
-                        <p>Kingmaths served as a painting sub-contractor for this landmark mixed-use development with hotel, apartments and office towers.</p>
-                        
+                        <p>Kingmaths served as a painting sub-contractor for this landmark mixed-use development with
+                            hotel, apartments and office towers.</p>
+
                         <h4>Services Provided:</h4>
                         <ul class="portfolio-services">
                             <li>Full interior and exterior finishing</li>
@@ -629,8 +699,9 @@
                             <li>Painting on walls, columns and ceilings</li>
                             <li>On-time completion of high-quality painting and glazing</li>
                         </ul>
-                        
-                        <a href="https://www.linkedin.com/posts/wbho-construction_wbho-capetown-bridgewater-activity-6834076545917693952-GwQR" class="portfolio-link" target="_blank">
+
+                        <a href="https://www.linkedin.com/posts/wbho-construction_wbho-capetown-bridgewater-activity-6834076545917693952-GwQR"
+                            class="portfolio-link" target="_blank">
                             View Project Details <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -662,7 +733,7 @@
                         </a>
                     </div>
                 </div> -->
-                
+
                 <!-- Project 2 -->
                 <!-- <div class="portfolio-card">
                     <div class="portfolio-image">
@@ -690,11 +761,12 @@
                         </a>
                     </div>
                 </div> -->
-                
+
                 <!-- Project 3 -->
                 <div class="portfolio-card">
                     <div class="portfolio-image">
-                        <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg" alt="De Kuile Lifestyle Estate">
+                        <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
+                            alt="De Kuile Lifestyle Estate">
                         <div class="portfolio-badge">Completed</div>
                     </div>
                     <div class="portfolio-content">
@@ -703,8 +775,9 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Kuils River</span>
                         </div>
-                        <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior & exterior finishing and painting.</p>
-                        
+                        <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior & exterior
+                            finishing and painting.</p>
+
                         <h4>Services Provided:</h4>
                         <ul class="portfolio-services">
                             <li>Full interior finishing for modern apartments</li>
@@ -712,14 +785,14 @@
                             <li>Living space painting to high standards</li>
                             <li>Contribution to estate's sleek, contemporary look</li>
                         </ul>
-                        
+
                         <a href="https://balwin.co.za/developments/de-kuile" class="portfolio-link" target="_blank">
                             View Project Details <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                
-                
+
+
             </div>
         </div>
     </section>
@@ -795,7 +868,7 @@
             </div>
         </div>
     </section>  -->
-    
+
 
     <!-- Call to Action -->
     <section class="portfolio-cta">
@@ -803,23 +876,27 @@
             <h2>Ready to Start Your Project?</h2>
             <p>Let's discuss how we can bring royal-grade craftsmanship to your next development</p>
             <div style="margin-top: 30px;">
-                <button class="cta-button header-cta" onclick="window.location.href='tel:+27659823727'"><i class="fas fa-phone"></i> Talk To Us</button>
+                <button class="cta-button header-cta" onclick="window.location.href='tel:+27659823727'"><i
+                        class="fas fa-phone"></i> Talk To Us</button>
             </div>
         </div>
     </section>
 
-      <!-- Footer -->
+    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Kingmaths Construction - Cape Town</h3>
-                    <p>Your local experts for renovations, painting, waterproofing, mold removal, tiling, roofing and all season property protection services in the Western Cape. Servicing all areas of Cape Town including Tyger Waterfront, Welgemoed, Bellville, Durbanville, Canal Walk, Brackenfell and surrounding suburbs</p>
+                    <p>Your local experts for renovations, painting, waterproofing, mold removal, tiling, roofing and
+                        all season property protection services in the Western Cape. Servicing all areas of Cape Town
+                        including Tyger Waterfront, Welgemoed, Bellville, Durbanville, Canal Walk, Brackenfell and
+                        surrounding suburbs</p>
                     <div class="social-links">
                         <a href="https://wa.me/27659823727"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <ul class="footer-contact">
@@ -831,18 +908,20 @@
                                 <iframe
                                     src="https://www.google.com/maps?q=4+Bridal+Cl,+Tyger+Waterfront,+Cape+Town,+7530,+Western+Cape&output=embed"
                                     width="100%" height="120" style="border:0; border-radius:8px; margin-top:8px;"
-                                    title="Kingmaths Construction Location - Cape Town"
-                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                    title="Kingmaths Construction Location - Cape Town" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+27659823727" style="color: var(--gold); text-decoration: underline;">+27 65 982 3727</a>
+                            <a href="tel:+27659823727" style="color: var(--gold); text-decoration: underline;">+27 65
+                                982 3727</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:support@kingmaths.com" style="color: var(--gold); text-decoration: underline;">support@kingmaths.com</a>
+                            <a href="mailto:support@kingmaths.com"
+                                style="color: var(--gold); text-decoration: underline;">support@kingmaths.com</a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
@@ -850,7 +929,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Services</h3>
                     <ul class="footer-services">
@@ -858,6 +937,8 @@
                         <li>Painting</li>
                         <li>Roofing</li>
                         <li>Tiling</li>
+                        <li>Paving</li>
+                        <li>Synthetic Turf</li>
                         <li>Crack Sealing</li>
                         <li>Waterproofing</li>
                         <li>Mold Removal</li>
@@ -865,7 +946,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
             </div>
@@ -873,21 +954,38 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a nav link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Simple animation for portfolio cards
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const portfolioCards = document.querySelectorAll('.portfolio-card');
-            
+
             portfolioCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, 200 * index);
             });
-            
+
             // Add active class to current page link
             const currentPage = window.location.pathname.split('/').pop();
             const navLinks = document.querySelectorAll('nav a');
-            
+
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentPage) {
                     link.classList.add('active');
@@ -896,4 +994,5 @@
         });
     </script>
 </body>
+
 </html>

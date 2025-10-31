@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kingmaths Construction | Project Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
     <style>
         :root {
@@ -17,13 +20,13 @@
             --charcoal: #333;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--snow);
@@ -31,13 +34,13 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Header */
         header {
             background: linear-gradient(135deg, var(--royal-blue) 0%, #041e42 100%);
@@ -50,43 +53,43 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
             max-width: 200px;
         }
-        
+
         .logo img {
             height: 70px;
             width: auto;
         }
-        
+
         .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             color: white;
             font-weight: 700;
         }
-        
+
         .logo-text span {
             color: var(--gold);
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
             gap: 30px;
         }
-        
+
         nav a {
             color: white;
             text-decoration: none;
@@ -97,11 +100,11 @@
             transition: var(--transition);
             position: relative;
         }
-        
+
         nav a:hover {
             color: var(--gold);
         }
-        
+
         nav a::after {
             content: '';
             position: absolute;
@@ -112,11 +115,11 @@
             background: var(--gold);
             transition: var(--transition);
         }
-        
+
         nav a:hover::after {
             width: 100%;
         }
-        
+
         .cta-button {
             background: var(--gold);
             color: var(--royal-blue);
@@ -131,17 +134,48 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
-        
+
         .cta-button:hover {
             background: #e6c447;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
-        
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(9px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-9px);
+        }
+
         /* Gallery Hero */
         .gallery-hero {
-            background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)), 
-                         url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1931&q=80');
+            background: linear-gradient(rgba(10, 46, 90, 0.85), rgba(4, 30, 66, 0.9)),
+                url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1931&q=80');
             background-size: cover;
             background-position: center;
             height: 50vh;
@@ -154,7 +188,7 @@
             margin-top: 80px;
             text-align: center;
         }
-        
+
         .gallery-hero-content {
             max-width: 800px;
             position: relative;
@@ -162,7 +196,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .gallery-hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.2rem, 6vw, 3.5rem);
@@ -171,25 +205,25 @@
             margin-bottom: 20px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .gallery-hero h1 span {
             color: var(--gold);
         }
-        
+
         .gallery-hero p {
             font-size: clamp(1rem, 3vw, 1.3rem);
             margin: 0 auto 30px;
             max-width: 700px;
             line-height: 1.6;
         }
-        
+
         /* Gallery Controls */
         .gallery-controls {
             padding: 40px 0 20px;
             background: var(--snow);
             text-align: center;
         }
-        
+
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -197,7 +231,7 @@
             gap: 10px;
             margin-bottom: 20px;
         }
-        
+
         .filter-btn {
             background: white;
             border: 2px solid var(--royal-blue);
@@ -208,18 +242,19 @@
             transition: var(--transition);
             font-weight: 600;
         }
-        
-        .filter-btn:hover, .filter-btn.active {
+
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--royal-blue);
             color: white;
         }
-        
+
         .search-box {
             position: relative;
             max-width: 500px;
             margin: 0 auto;
         }
-        
+
         .search-box input {
             width: 100%;
             padding: 12px 20px;
@@ -228,7 +263,7 @@
             font-family: 'Montserrat', sans-serif;
             padding-left: 45px;
         }
-        
+
         .search-box i {
             position: absolute;
             left: 20px;
@@ -236,18 +271,18 @@
             transform: translateY(-50%);
             color: var(--royal-blue);
         }
-        
+
         /* Gallery Grid */
         .gallery-grid {
             padding: 40px 0 80px;
             background: var(--snow);
         }
-        
+
         .masonry-grid {
             columns: 3;
             column-gap: 20px;
         }
-        
+
         .gallery-item {
             break-inside: avoid;
             margin-bottom: 20px;
@@ -258,22 +293,22 @@
             transition: var(--transition);
             cursor: pointer;
         }
-        
+
         .gallery-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .gallery-item img {
             width: 100%;
             display: block;
             transition: var(--transition);
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-        
+
         .gallery-info {
             position: absolute;
             bottom: 0;
@@ -285,16 +320,16 @@
             opacity: 0;
             transition: var(--transition);
         }
-        
+
         .gallery-item:hover .gallery-info {
             opacity: 1;
         }
-        
+
         .gallery-info h3 {
             font-size: 1.2rem;
             margin-bottom: 5px;
         }
-        
+
         .gallery-info .category {
             display: inline-block;
             background: var(--gold);
@@ -305,7 +340,7 @@
             font-weight: 600;
             margin-top: 5px;
         }
-        
+
         /* Lightbox */
         .lightbox {
             position: fixed;
@@ -322,25 +357,25 @@
             pointer-events: none;
             transition: var(--transition);
         }
-        
+
         .lightbox.active {
             opacity: 1;
             pointer-events: all;
         }
-        
+
         .lightbox-content {
             position: relative;
             max-width: 90%;
             max-height: 90%;
         }
-        
+
         .lightbox-content img {
             max-width: 100%;
             max-height: 80vh;
             border-radius: 10px;
             box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
         }
-        
+
         .lightbox-close {
             position: absolute;
             top: 20px;
@@ -357,12 +392,12 @@
             justify-content: center;
             transition: var(--transition);
         }
-        
+
         .lightbox-close:hover {
             background: var(--gold);
             color: var(--royal-blue);
         }
-        
+
         .lightbox-nav {
             position: absolute;
             top: 50%;
@@ -378,45 +413,45 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        
+
         .lightbox-nav:hover {
             background: var(--gold);
             color: var(--royal-blue);
         }
-        
+
         .lightbox-prev {
             left: 20px;
         }
-        
+
         .lightbox-next {
             right: 20px;
         }
-        
+
         /* Footer */
         footer {
             background: var(--royal-blue);
             color: white;
             padding: 70px 0 30px;
         }
-        
+
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 50px;
         }
-        
+
         .footer-col {
             padding: 0 15px;
         }
-        
+
         .footer-col h3 {
             font-size: clamp(1.2rem, 3vw, 1.4rem);
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-col h3::after {
             content: '';
             position: absolute;
@@ -426,26 +461,26 @@
             height: 3px;
             background: var(--gold);
         }
-        
+
         .footer-contact li {
             margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
         }
-        
+
         .footer-contact i {
             color: var(--gold);
             font-size: 1.2rem;
             min-width: 20px;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-links a {
             display: flex;
             align-items: center;
@@ -457,12 +492,12 @@
             color: white;
             transition: var(--transition);
         }
-        
+
         .social-links a:hover {
             background: var(--gold);
             transform: translateY(-5px);
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -470,56 +505,85 @@
             font-size: 0.9rem;
             opacity: 0.7;
         }
-        
+
         /* Responsive */
         @media (max-width: 992px) {
             .masonry-grid {
                 columns: 2;
             }
         }
-        
+
         @media (max-width: 768px) {
+
+            /* Mobile Navigation */
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--royal-blue);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .cta-button.header-cta {
+                display: none;
+            }
+
             .masonry-grid {
                 columns: 1;
             }
-            
-            nav ul {
-                display: none;
-            }
-            
+
             .gallery-hero {
                 height: 40vh;
             }
         }
-        
+
         @media (max-width: 576px) {
             .filter-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .filter-btn {
                 width: 100%;
                 max-width: 300px;
             }
-            
+
             .gallery-info {
                 padding: 10px;
                 font-size: 0.9rem;
             }
-            
+
             .gallery-info h3 {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/images/logo.png" alt="King Maths Construction" style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
+                <img src="/images/logo.png" alt="King Maths Construction"
+                    style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
             </a>
 
             <div class="menu-toggle" id="mobile-menu">
@@ -530,14 +594,15 @@
 
             <nav>
                 <ul id="nav-menu">
-                   <li><a href="/#services">Services</a></li>
+                    <li><a href="/#services">Services</a></li>
                     <li><a href="/portfolio/">Portfolio</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
                     <li><a href="/#why-us">Why Us</a></li>
                     <li><a href="/#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free Estimate</button>
+            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free
+                Estimate</button>
         </div>
         <style>
             @media (max-width: 768px) {
@@ -547,16 +612,19 @@
                     justify-content: center !important;
                     padding-top: 10px;
                     padding-bottom: 10px;
-                    gap:0;
+                    gap: 0;
                 }
+
                 .logo {
-                   
+
                     margin-bottom: 8px;
                     justify-content: center;
                 }
+
                 .menu-toggle {
                     margin-bottom: 8px;
                 }
+
                 nav ul {
                     margin-top: 12px;
                     margin-bottom: 12px;
@@ -581,6 +649,8 @@
                 <button class="filter-btn" data-filter="painting">Painting</button>
                 <button class="filter-btn" data-filter="waterproofing">Waterproofing</button>
                 <button class="filter-btn" data-filter="tiling">Tiling</button>
+                <button class="filter-btn" data-filter="paving">Paving</button>
+                <button class="filter-btn" data-filter="turf">Synthetic Turf</button>
                 <button class="filter-btn" data-filter="roofing">Roofing</button>
                 <button class="filter-btn" data-filter="renovation">Renovation</button>
             </div>
@@ -609,14 +679,15 @@
                 </div>
 
                 <div class="gallery-item" data-category="painting">
-                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Interior Painting">
+                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                        alt="Interior Painting">
                     <div class="gallery-info">
                         <h3>Modern Living Room</h3>
                         <p>Premium interior painting with family-safe coatings</p>
                         <span class="category">Painting</span>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="painting">
                     <img src="/images/exterior 2.jpg" alt="Exterior Home Painting">
                     <div class="gallery-info">
@@ -634,9 +705,10 @@
                         <span class="category">Painting</span>
                     </div>
                 </div>
-                
+
                 <div class="gallery-item" data-category="tiling">
-                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Roof Waterproofing">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                        alt="Roof Waterproofing">
                     <div class="gallery-info">
                         <h3>Bathroom Tiling</h3>
                         <p>Premium bathroom waterproofing and tiling installation</p>
@@ -654,7 +726,8 @@
                 </div>
 
                 <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465682013_594520159577981_7034951761903983430_n.jpg" alt="Interior painting Bridgewater Project">
+                    <img src="/images/bridgewater one/465682013_594520159577981_7034951761903983430_n.jpg"
+                        alt="Interior painting Bridgewater Project">
                     <div class="gallery-info">
                         <h3>Bridgewater One</h3>
                         <p>Interior painting project showcasing rich colors and textures</p>
@@ -663,7 +736,8 @@
                 </div>
 
                 <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465911545_594520182911312_8965199448761407890_n.jpg" alt="Exterior Project">
+                    <img src="/images/bridgewater one/465911545_594520182911312_8965199448761407890_n.jpg"
+                        alt="Exterior Project">
                     <div class="gallery-info">
                         <h3>Bridgewater One</h3>
                         <p>Exterior Painting</p>
@@ -671,17 +745,9 @@
                     </div>
                 </div>
 
-                 <div class="gallery-item" data-category="roofing">
-                    <img src="images/roofing.jpg" alt="Roofing and Painting">
-                    <div class="gallery-info">
-                        <h3>Verdot Apartments </h3>
-                        <p>Roofing and Painting</p>
-                        <span class="category">Roofing</span>
-                    </div>
-                </div>
-
                 <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465977659_594500402913290_6966256726158886044_n.jpg" alt="Painting Project">
+                    <img src="/images/bridgewater one/465977659_594500402913290_6966256726158886044_n.jpg"
+                        alt="Painting Project">
                     <div class="gallery-info">
                         <h3>Bridgewater One</h3>
                         <p>High-quality exterior painting for modern spaces</p>
@@ -717,10 +783,561 @@
                 </div>
 
                 <div class="gallery-item" data-category="painting">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Mold Remediation">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                        alt="Mold Remediation">
                     <div class="gallery-info">
                         <h3>Mold Remediation Project</h3>
                         <p>After mold removal</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <!-- Waterproofing & Ceiling Projects -->
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil.jpg" alt="Ceiling Water Damage Before Repair">
+                    <div class="gallery-info">
+                        <h3>Ceiling Water Damage - Before</h3>
+                        <p>Severe ceiling water staining requiring urgent waterproofing intervention</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil 5.jpg" alt="Restored Ceiling After Waterproofing">
+                    <div class="gallery-info">
+                        <h3>Ceiling Restoration - After</h3>
+                        <p>Professionally waterproofed and repainted ceiling, water damage eliminated</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil 1.jpg" alt="Ceiling Leak Assessment">
+                    <div class="gallery-info">
+                        <h3>Ceiling Leak Assessment</h3>
+                        <p>Professional inspection of ceiling water damage and leak source identification</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil3.jpg" alt="Ceiling Water Staining Repair">
+                    <div class="gallery-info">
+                        <h3>Ceiling Water Stain Removal</h3>
+                        <p>Expert treatment of water-damaged ceiling with waterproofing application</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil 4.jpg" alt="Ceiling Waterproofing in Progress">
+                    <div class="gallery-info">
+                        <h3>Ceiling Waterproofing Process</h3>
+                        <p>Mid-stage ceiling repair showing waterproofing and sealing work</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil bef.jpg" alt="Bathroom Ceiling Before Treatment">
+                    <div class="gallery-info">
+                        <h3>Bathroom Ceiling - Before</h3>
+                        <p>Water-damaged bathroom ceiling prior to waterproofing treatment</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="waterproofing">
+                    <img src="/images/ceil af.jpg" alt="Bathroom Ceiling After Waterproofing">
+                    <div class="gallery-info">
+                        <h3>Bathroom Ceiling - After</h3>
+                        <p>Fully restored and waterproofed bathroom ceiling with pristine finish</p>
+                        <span class="category">Waterproofing</span>
+                    </div>
+                </div>
+
+                <!-- Crack Repair Projects -->
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks-before.jpg" alt="Wall Cracks Before Repair">
+                    <div class="gallery-info">
+                        <h3>Structural Wall Cracks - Before</h3>
+                        <p>Significant wall cracking requiring professional sealing and repair</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks-after.jpg" alt="Wall Cracks After Repair">
+                    <div class="gallery-info">
+                        <h3>Structural Wall Repair - After</h3>
+                        <p>Expertly sealed and finished wall with all cracks permanently repaired</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks.jpg" alt="Foundation Crack Sealing">
+                    <div class="gallery-info">
+                        <h3>Foundation Crack Treatment</h3>
+                        <p>Professional crack injection and sealing to prevent water infiltration</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks 1.jpg" alt="Exterior Wall Crack Repair">
+                    <div class="gallery-info">
+                        <h3>Exterior Wall Crack Sealing</h3>
+                        <p>Weather-resistant crack filling on exterior walls for long-term protection</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks 2.jpg" alt="Interior Crack Repair Work">
+                    <div class="gallery-info">
+                        <h3>Interior Crack Restoration</h3>
+                        <p>Detailed crack repair and surface preparation for painting</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/cracks 3.jpg" alt="Multiple Crack Repair Project">
+                    <div class="gallery-info">
+                        <h3>Comprehensive Crack Repair</h3>
+                        <p>Multiple crack lines sealed and reinforced for structural integrity</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <!-- Mold Removal Projects -->
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/mold-before.jpg" alt="Severe Mold Infestation Before Treatment">
+                    <div class="gallery-info">
+                        <h3>Severe Mold Damage - Before</h3>
+                        <p>Extensive mold growth on walls requiring professional remediation</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/mold-after.jpg" alt="Mold-Free Wall After Treatment">
+                    <div class="gallery-info">
+                        <h3>Mold Remediation - After</h3>
+                        <p>Complete mold removal with antimicrobial treatment and fresh paint</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <!-- Exterior & Painting Projects -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/exterior.jpg" alt="Modern Home Exterior Painting">
+                    <div class="gallery-info">
+                        <h3>Contemporary Exterior Paint Finish</h3>
+                        <p>High-quality weather-resistant paint application on modern home exterior</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <!-- Tiling Projects -->
+                <div class="gallery-item" data-category="tiling">
+                    <img src="/images/tile 1.jpg" alt="Floor Tile Installation">
+                    <div class="gallery-info">
+                        <h3>Premium Floor Tiling</h3>
+                        <p>Expert installation of high-quality floor tiles with precision alignment</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tiling">
+                    <img src="/images/tile 2.jpg" alt="Bathroom Wall Tiling">
+                    <div class="gallery-info">
+                        <h3>Bathroom Wall Tile Installation</h3>
+                        <p>Professional bathroom tiling with waterproof backing and neat grouting</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tiling">
+                    <img src="/images/tile 3.jpg" alt="Kitchen Backsplash Tiling">
+                    <div class="gallery-info">
+                        <h3>Kitchen Tile Work</h3>
+                        <p>Custom tile installation for kitchen walls and backsplash areas</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="tiling">
+                    <img src="/images/tile 4.jpg" alt="Large Format Tile Installation">
+                    <div class="gallery-info">
+                        <h3>Large Format Tile Layout</h3>
+                        <p>Modern large-format tile installation with minimal grout lines</p>
+                        <span class="category">Tiling</span>
+                    </div>
+                </div>
+
+                <!-- Bathroom Renovation Projects -->
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/bathroom bef.jpg" alt="Bathroom Before Renovation">
+                    <div class="gallery-info">
+                        <h3>Bathroom Renovation - Before</h3>
+                        <p>Outdated bathroom requiring complete waterproofing and modernization</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/bathroom aft.jpg" alt="Bathroom After Renovation">
+                    <div class="gallery-info">
+                        <h3>Bathroom Renovation - After</h3>
+                        <p>Fully renovated bathroom with waterproofing, tiling, and modern finishes</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <!-- Roofing Projects -->
+                <div class="gallery-item" data-category="roofing">
+                    <img src="/images/roofing.jpg" alt="Roof Repair and Maintenance Work">
+                    <div class="gallery-info">
+                        <h3>Professional Roof Maintenance</h3>
+                        <p>Expert roof inspection, repair, and waterproofing services</p>
+                        <span class="category">Roofing</span>
+                    </div>
+                </div>
+
+                <!-- Additional General Projects -->
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/more.jpg" alt="General Renovation Work">
+                    <div class="gallery-info">
+                        <h3>Property Upgrade Project</h3>
+                        <p>Comprehensive renovation enhancing property value and appearance</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/more 1.jpg" alt="Interior Renovation Detail">
+                    <div class="gallery-info">
+                        <h3>Interior Restoration Work</h3>
+                        <p>Detailed interior renovation with quality materials and finishes</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/more 3.jpg" alt="Home Improvement Project">
+                    <div class="gallery-info">
+                        <h3>Home Improvement Upgrade</h3>
+                        <p>Multi-aspect renovation improving functionality and aesthetics</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="renovation">
+                    <img src="/images/more4.jpg" alt="Property Enhancement Work">
+                    <div class="gallery-info">
+                        <h3>Property Enhancement Project</h3>
+                        <p>Professional renovation work transforming living spaces</p>
+                        <span class="category">Renovation</span>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Image Projects from June 2025 -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0005.jpg" alt="Residential Painting Project">
+                    <div class="gallery-info">
+                        <h3>Residential Paint Application</h3>
+                        <p>Professional interior/exterior painting with premium finish</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0006.jpg" alt="Quality Paintwork Detail">
+                    <div class="gallery-info">
+                        <h3>Premium Paint Finish</h3>
+                        <p>High-quality paint application showcasing expert craftsmanship</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0007.jpg" alt="Exterior Paint Project">
+                    <div class="gallery-info">
+                        <h3>Exterior Painting Service</h3>
+                        <p>Weather-resistant exterior paint application for lasting protection</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0008.jpg" alt="Commercial Painting Work">
+                    <div class="gallery-info">
+                        <h3>Commercial Paint Project</h3>
+                        <p>Large-scale painting project with professional finish</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0009.jpg" alt="Interior Wall Painting">
+                    <div class="gallery-info">
+                        <h3>Interior Wall Treatment</h3>
+                        <p>Fresh interior paint application with smooth, even coverage</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0011.jpg" alt="Multi-Room Painting Project">
+                    <div class="gallery-info">
+                        <h3>Multi-Room Paint Transformation</h3>
+                        <p>Complete home painting with coordinated color scheme</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0012.jpg" alt="Fresh Paint Application">
+                    <div class="gallery-info">
+                        <h3>Fresh Paint Installation</h3>
+                        <p>New paint application revitalizing interior spaces</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0013.jpg" alt="Wall Preparation and Painting">
+                    <div class="gallery-info">
+                        <h3>Wall Prep & Paint Work</h3>
+                        <p>Professional surface preparation before quality paint application</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0014.jpg" alt="Ceiling Painting Service">
+                    <div class="gallery-info">
+                        <h3>Ceiling Paint Treatment</h3>
+                        <p>Expert ceiling painting with anti-drip, smooth finish</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0015.jpg" alt="Trim and Detail Painting">
+                    <div class="gallery-info">
+                        <h3>Trim & Detail Work</h3>
+                        <p>Precise painting of trim, doors, and architectural details</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0017.jpg" alt="Full House Painting">
+                    <div class="gallery-info">
+                        <h3>Complete House Painting</h3>
+                        <p>Whole-property paint transformation with quality materials</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0018.jpg" alt="Feature Wall Painting">
+                    <div class="gallery-info">
+                        <h3>Feature Wall Creation</h3>
+                        <p>Accent wall painting adding character to living spaces</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0019.jpg" alt="Room Makeover Paint Job">
+                    <div class="gallery-info">
+                        <h3>Room Transformation</h3>
+                        <p>Complete room makeover with fresh paint and modern colors</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0020.jpg" alt="Exterior Facade Painting">
+                    <div class="gallery-info">
+                        <h3>Exterior Facade Treatment</h3>
+                        <p>Complete exterior facade painting enhancing curb appeal</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0021.jpg" alt="Property Paint Upgrade">
+                    <div class="gallery-info">
+                        <h3>Property Paint Upgrade</h3>
+                        <p>Comprehensive painting service increasing property value</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/IMG-20250627-WA0022.jpg" alt="Final Paint Inspection">
+                    <div class="gallery-info">
+                        <h3>Quality Paint Completion</h3>
+                        <p>Final inspection showing immaculate paint finish and cleanup</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <!-- Additional WhatsApp Images -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.48_1f4c383b.jpg" alt="Evening Paint Project">
+                    <div class="gallery-info">
+                        <h3>Quality Evening Work</h3>
+                        <p>Dedicated painting service with attention to detail</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.49_354747cf.jpg" alt="Paint Progress Check">
+                    <div class="gallery-info">
+                        <h3>Paint Application Progress</h3>
+                        <p>Mid-project quality check ensuring perfect results</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.50_3eefa157.jpg" alt="Paint Quality Control">
+                    <div class="gallery-info">
+                        <h3>Paint Quality Assurance</h3>
+                        <p>Professional quality control during paint application</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.53_8467f3b4.jpg" alt="Detailed Paint Work">
+                    <div class="gallery-info">
+                        <h3>Detailed Paint Craftsmanship</h3>
+                        <p>Expert painting technique on display</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.56_94e48c16.jpg"
+                        alt="Paint Project Completion">
+                    <div class="gallery-info">
+                        <h3>Completed Paint Service</h3>
+                        <p>Finished painting project ready for client handover</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <!-- Recent October 2025 Projects -->
+                <div class="gallery-item" data-category="paving">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.14 PM.jpeg"
+                        alt="Paving Installation October 2025">
+                    <div class="gallery-info">
+                        <h3>Premium Paving Installation</h3>
+                        <p>Crown Cobblestone paving project with interlocking pavers</p>
+                        <span class="category">Paving</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="paving">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.37 PM.jpeg" alt="Driveway Paving Project">
+                    <div class="gallery-info">
+                        <h3>Driveway Paving Work</h3>
+                        <p>Professional driveway paving with premium stone pavers</p>
+                        <span class="category">Paving</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="paving">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.38 PM.jpeg" alt="Patio Paving Installation">
+                    <div class="gallery-info">
+                        <h3>Patio Paving Service</h3>
+                        <p>Expert patio paving with custom pattern arrangement</p>
+                        <span class="category">Paving</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="turf">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.39 PM.jpeg" alt="Synthetic Turf Installation">
+                    <div class="gallery-info">
+                        <h3>Royal Turf Installation</h3>
+                        <p>Premium synthetic grass installation for residential property</p>
+                        <span class="category">Turf</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="turf">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.41 PM.jpeg" alt="Artificial Grass Laying">
+                    <div class="gallery-info">
+                        <h3>Artificial Grass Installation</h3>
+                        <p>Royal Turf synthetic grass with UV-stabilized fibers</p>
+                        <span class="category">Turf</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="turf">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.57 PM.jpeg" alt="Completed Turf Installation">
+                    <div class="gallery-info">
+                        <h3>Turf Installation Complete</h3>
+                        <p>Finished synthetic turf project with lush green appearance</p>
+                        <span class="category">Turf</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="paving">
+                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.58 PM.jpeg" alt="Cobblestone Paving Detail">
+                    <div class="gallery-info">
+                        <h3>Cobblestone Paving Detail</h3>
+                        <p>Crown Cobblestone with herringbone pattern installation</p>
+                        <span class="category">Paving</span>
+                    </div>
+                </div>
+
+                <!-- Social Media Featured Project -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/469681733_615975094099154_857653448742105082_n.jpg"
+                        alt="Featured Social Media Project">
+                    <div class="gallery-info">
+                        <h3>Featured Project Showcase</h3>
+                        <p>Highlighted project demonstrating our royal-grade craftsmanship</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <!-- Additional Bridgewater Projects -->
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/bridgewater one/465795169_594520149577982_7588394275861740328_n.jpg"
+                        alt="Bridgewater Interior Detail">
+                    <div class="gallery-info">
+                        <h3>Bridgewater Interior Detail</h3>
+                        <p>Detailed interior finishing at Bridgewater estate project</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/bridgewater one/465928156_594520109577986_3454071221753276610_n.jpg"
+                        alt="Bridgewater Wall Treatment">
+                    <div class="gallery-info">
+                        <h3>Bridgewater Wall Finishing</h3>
+                        <p>Premium wall treatment and painting at Bridgewater development</p>
+                        <span class="category">Painting</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="painting">
+                    <img src="/images/bridgewater one/466001148_594520192911311_3464684150075992976_n.jpg"
+                        alt="Bridgewater Final Touches">
+                    <div class="gallery-info">
+                        <h3>Bridgewater Final Touches</h3>
+                        <p>Completion work on Bridgewater residential painting project</p>
                         <span class="category">Painting</span>
                     </div>
                 </div>
@@ -745,18 +1362,21 @@
         </div>
     </div>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Kingmaths Construction - Cape Town</h3>
-                    <p>Your local experts for renovations, painting, waterproofing, mold removal, tiling, roofing and all season property protection services in the Western Cape. Servicing all areas of Cape Town including Tyger Waterfront, Welgemoed, Bellville, Durbanville, Canal Walk, Brackenfell and surrounding suburbs</p>
+                    <p>Your local experts for renovations, painting, waterproofing, mold removal, tiling, roofing and
+                        all season property protection services in the Western Cape. Servicing all areas of Cape Town
+                        including Tyger Waterfront, Welgemoed, Bellville, Durbanville, Canal Walk, Brackenfell and
+                        surrounding suburbs</p>
                     <div class="social-links">
                         <a href="https://wa.me/27659823727"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <ul class="footer-contact">
@@ -768,18 +1388,20 @@
                                 <iframe
                                     src="https://www.google.com/maps?q=4+Bridal+Cl,+Tyger+Waterfront,+Cape+Town,+7530,+Western+Cape&output=embed"
                                     width="100%" height="120" style="border:0; border-radius:8px; margin-top:8px;"
-                                    title="Kingmaths Construction Location - Cape Town"
-                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                    title="Kingmaths Construction Location - Cape Town" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+27659823727" style="color: var(--gold); text-decoration: underline;">+27 65 982 3727</a>
+                            <a href="tel:+27659823727" style="color: var(--gold); text-decoration: underline;">+27 65
+                                982 3727</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:support@kingmaths.com" style="color: var(--gold); text-decoration: underline;">support@kingmaths.com</a>
+                            <a href="mailto:support@kingmaths.com"
+                                style="color: var(--gold); text-decoration: underline;">support@kingmaths.com</a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
@@ -787,7 +1409,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Services</h3>
                     <ul class="footer-services">
@@ -795,6 +1417,8 @@
                         <li>Painting</li>
                         <li>Roofing</li>
                         <li>Tiling</li>
+                        <li>Paving</li>
+                        <li>Synthetic Turf</li>
                         <li>Crack Sealing</li>
                         <li>Waterproofing</li>
                         <li>Mold Removal</li>
@@ -802,7 +1426,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
             </div>
@@ -810,8 +1434,25 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a nav link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Gallery functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const galleryItems = document.querySelectorAll('.gallery-item');
             const filterButtons = document.querySelectorAll('.filter-btn');
             const searchInput = document.getElementById('search-input');
@@ -820,21 +1461,21 @@
             const lightboxClose = document.querySelector('.lightbox-close');
             const lightboxPrev = document.querySelector('.lightbox-prev');
             const lightboxNext = document.querySelector('.lightbox-next');
-            
+
             let currentImageIndex = 0;
             const images = Array.from(galleryItems);
-            
+
             // Filter functionality
             filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
+
                     // Add active class to clicked button
                     this.classList.add('active');
-                    
+
                     const filter = this.getAttribute('data-filter');
-                    
+
                     galleryItems.forEach(item => {
                         if (filter === 'all' || item.getAttribute('data-category') === filter) {
                             item.style.display = 'block';
@@ -844,15 +1485,15 @@
                     });
                 });
             });
-            
+
             // Search functionality
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener('input', function () {
                 const searchTerm = this.value.toLowerCase();
-                
+
                 galleryItems.forEach(item => {
                     const title = item.querySelector('h3').textContent.toLowerCase();
                     const description = item.querySelector('p').textContent.toLowerCase();
-                    
+
                     if (title.includes(searchTerm) || description.includes(searchTerm)) {
                         item.style.display = 'block';
                     } else {
@@ -860,44 +1501,44 @@
                     }
                 });
             });
-            
+
             // Lightbox functionality
             galleryItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     const imgSrc = this.querySelector('img').getAttribute('src');
                     lightboxImg.setAttribute('src', imgSrc);
                     currentImageIndex = index;
                     lightbox.classList.add('active');
                 });
             });
-            
+
             // Close lightbox
-            lightboxClose.addEventListener('click', function() {
+            lightboxClose.addEventListener('click', function () {
                 lightbox.classList.remove('active');
             });
-            
+
             // Navigation in lightbox
-            lightboxPrev.addEventListener('click', function() {
+            lightboxPrev.addEventListener('click', function () {
                 currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
                 const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
                 lightboxImg.setAttribute('src', imgSrc);
             });
-            
-            lightboxNext.addEventListener('click', function() {
+
+            lightboxNext.addEventListener('click', function () {
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
                 lightboxImg.setAttribute('src', imgSrc);
             });
-            
+
             // Close lightbox when clicking outside
-            lightbox.addEventListener('click', function(e) {
+            lightbox.addEventListener('click', function (e) {
                 if (e.target === lightbox) {
                     lightbox.classList.remove('active');
                 }
             });
-            
+
             // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (lightbox.classList.contains('active')) {
                     if (e.key === 'Escape') {
                         lightbox.classList.remove('active');
@@ -911,4 +1552,5 @@
         });
     </script>
 </body>
+
 </html>
