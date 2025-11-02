@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://kingmaths.com/</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/logo.png</image:loc>
+      <image:title>Kingmaths Construction Logo</image:title>
+      <image:caption>Professional construction services in Cape Town</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Gallery Page -->
+  <url>
+    <loc>https://kingmaths.com/gallery/</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/bathroom%20aft.jpg</image:loc>
+      <image:title>Bathroom Renovation After</image:title>
+      <image:caption>Professional bathroom renovation in Cape Town</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/bathroom%20bef.jpg</image:loc>
+      <image:title>Bathroom Renovation Before</image:title>
+      <image:caption>Bathroom before renovation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/cracks-after.jpg</image:loc>
+      <image:title>Crack Sealing After</image:title>
+      <image:caption>Professional crack sealing results</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/cracks-before.jpg</image:loc>
+      <image:title>Crack Sealing Before</image:title>
+      <image:caption>Cracks before repair</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/mold-after.jpg</image:loc>
+      <image:title>Mold Removal After</image:title>
+      <image:caption>Professional mold removal results</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kingmaths.com/images/mold-before.jpg</image:loc>
+      <image:title>Mold Removal Before</image:title>
+      <image:caption>Mold before treatment</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Portfolio Page -->
+  <url>
+    <loc>https://kingmaths.com/portfolio/</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Service-specific pages (virtual locations for SEO) -->
+  <url>
+    <loc>https://kingmaths.com/#painting</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#waterproofing</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#roof-repairs</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#renovations</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#tiling</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#mold-removal</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://kingmaths.com/#contact</loc>
+    <lastmod>2025-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>

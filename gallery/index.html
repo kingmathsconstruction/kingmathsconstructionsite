@@ -4,12 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kingmaths Construction | Project Gallery</title>
+    <title>Project Gallery | Kingmaths Construction Cape Town | Before & After Photos | Black Friday Deals</title>
+    <link rel="canonical" href="https://kingmaths.com/gallery/">
+    <meta name="description"
+        content="View our completed construction projects in Cape Town. Browse before & after photos of painting, waterproofing, renovations, tiling & roof repairs. Black Friday: 30% OFF! Get inspired & call 065 982 3727 for free quote.">
+    <meta name="keywords"
+        content="construction gallery Cape Town, before after painting Cape Town, renovation photos Cape Town, waterproofing results, tiling gallery, roof repair photos, construction portfolio Western Cape, home renovation gallery, painting transformation, completed projects Cape Town, Black Friday construction">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kingmaths.com/gallery/">
+    <meta property="og:title" content="Construction Project Gallery | Kingmaths Cape Town | Before & After">
+    <meta property="og:description"
+        content="Browse our portfolio of completed construction projects. See stunning before & after transformations. Black Friday Special: 30% OFF!">
+    <meta property="og:image" content="https://kingmaths.com/images/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Construction Gallery | Kingmaths Cape Town">
+    <meta name="twitter:description"
+        content="View completed projects: painting, waterproofing, renovations & more. Black Friday: 30% OFF!">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Montserrat:wght@300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Kingmaths Construction Project Gallery",
+      "description": "Gallery of completed construction, painting, waterproofing, and renovation projects in Cape Town",
+      "url": "https://kingmaths.com/gallery/",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Kingmaths Construction",
+        "telephone": "+27659823727",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cape Town",
+          "addressRegion": "Western Cape",
+          "addressCountry": "ZA"
+        }
+      }
+    }
+    </script>
     <style>
         :root {
             --royal-blue: #0a2e5a;
@@ -272,6 +315,8 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+            overflow: visible;
         }
 
         .cta-button:hover {
@@ -827,6 +872,35 @@
                 margin-bottom: 8px;
             }
 
+            /* Mobile CTA Buttons */
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .hero-buttons .cta-button {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+
+            .service-card .cta-button {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.85rem;
+            }
+
+            .cta-section .cta-button {
+                width: 100%;
+                max-width: 300px;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+
             .gallery-item {
                 width: 300px;
                 height: 400px;
@@ -890,6 +964,24 @@
             .logo img,
             .logo-image {
                 height: 60px;
+            }
+
+            /* Smaller CTA buttons for very small screens */
+            .hero-buttons .cta-button {
+                max-width: 240px;
+                padding: 12px 16px;
+                font-size: 0.8rem;
+            }
+
+            .service-card .cta-button {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+
+            .cta-section .cta-button {
+                max-width: 260px;
+                padding: 12px 16px;
+                font-size: 0.85rem;
             }
 
             .promo-banner {
@@ -973,8 +1065,9 @@
             <span class="promo-text">BLACK FRIDAY!</span>
             <div class="promo-scroll-wrapper">
                 <span class="promo-scroll-text promo-highlight">
-                    FREE INSPECTION + 10% OFF Quote Before Sunday! • FREE INSPECTION + 10% OFF Quote Before Sunday! •
-                    FREE INSPECTION + 10% OFF Quote Before Sunday! •
+                    FREE INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! • FREE
+                    INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! •
+                    FREE INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! •
                 </span>
             </div>
             <button class="promo-cta-btn" onclick="window.location.href='tel:+27659823727'">
@@ -1007,8 +1100,8 @@
                     <li><a href="/#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free
-                Estimate</button>
+            <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'"><i
+                    class="fas fa-phone"></i> Claim Free Inspection</button>
         </div>
     </header>
 
@@ -1765,12 +1858,13 @@
                     BLACK FRIDAY SPECIAL!</h3>
                 <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">FREE INSPECTION - CALL US NOW!</p>
                 <p style="font-size: 0.95rem; margin-bottom: 8px;">Offer valid until 30 November 2025</p>
-                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold);">🎉 BONUS: 10% OFF QUOTE when you
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold);">🎉 BONUS: 10% OFF discounted on
+                    total price of services on quote when you
                     call us before Sunday!</p>
             </div>
 
             <button class="cta-button" onclick="window.location.href='tel:+27659823727'" style="margin-top: 20px;">
-                <i class="fas fa-phone"></i> Call Now for Free Inspection
+                <i class="fas fa-phone"></i> Claim Free Inspection
             </button>
         </div>
     </section>

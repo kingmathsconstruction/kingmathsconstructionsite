@@ -1,0 +1,118 @@
+<!-- Google Analytics 4 - Add this code to the <head> section of all pages -->
+<!-- Replace G-XXXXXXXXXX with your actual Google Analytics Measurement ID -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX', {
+        'phone_conversion_number': '065 982 3727',
+        'send_page_view': true,
+        'page_location': window.location.href,
+        'page_title': document.title
+    });
+
+    // Track phone clicks
+    document.addEventListener('DOMContentLoaded', function () {
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        phoneLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                gtag('event', 'phone_call', {
+                    'event_category': 'Contact',
+                    'event_label': 'Phone Call Click',
+                    'value': 1
+                });
+            });
+        });
+
+        // Track WhatsApp clicks
+        const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+        whatsappLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                gtag('event', 'whatsapp_click', {
+                    'event_category': 'Contact',
+                    'event_label': 'WhatsApp Click',
+                    'value': 1
+                });
+            });
+        });
+
+        // Track form submissions (if you add contact forms)
+        const forms = document.querySelectorAll('form');
+        forms.forEach(function (form) {
+            form.addEventListener('submit', function () {
+                gtag('event', 'form_submit', {
+                    'event_category': 'Lead Generation',
+                    'event_label': 'Contact Form Submission',
+                    'value': 1
+                });
+            });
+        });
+
+        // Track CTA button clicks
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                gtag('event', 'cta_click', {
+                    'event_category': 'Engagement',
+                    'event_label': button.textContent.trim(),
+                    'value': 1
+                });
+            });
+        });
+
+        // Track service card interactions
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(function (card, index) {
+            card.addEventListener('click', function () {
+                const serviceName = card.querySelector('h3') ? card.querySelector('h3').textContent : 'Service ' + (index + 1);
+                gtag('event', 'service_view', {
+                    'event_category': 'Services',
+                    'event_label': serviceName,
+                    'value': 1
+                });
+            });
+        });
+    });
+</script>
+
+<!-- Facebook Pixel - Optional but recommended for ads -->
+<!-- Replace XXXXXXXXX with your Facebook Pixel ID -->
+<script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'XXXXXXXXX');
+    fbq('track', 'PageView');
+</script>
+<noscript>
+    <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=XXXXXXXXX&ev=PageView&noscript=1" />
+</noscript>
+
+<!-- Microsoft Clarity - Free heatmaps and session recordings -->
+<!-- Replace XXXXXXXXX with your Clarity project ID -->
+<script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "XXXXXXXXX");
+</script>
+
+<!-- Call Tracking Script - Track phone conversions -->
+<!-- Optional: Use services like CallRail or similar -->
+<script>
+    // Replace with your call tracking service code
+</script>
