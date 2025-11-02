@@ -27,12 +27,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--snow);
             color: var(--charcoal);
             overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
         }
 
         .container {
@@ -48,10 +54,143 @@
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 42px;
+            margin: 0;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
+            border-top: 0;
+        }
+
+        /* Black Friday Marquee Banner */
+        .promo-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            color: white;
+            padding: 0;
+            margin: 0;
+            z-index: 1001;
+            overflow: hidden;
+            border: 0;
+            box-shadow: none;
+            line-height: 1;
+            display: block;
+            height: 42px;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            animation: slideIn 0.5s ease-out;
+            padding: 10px 20px;
+            white-space: nowrap;
+            margin: 0;
+            line-height: 1.2;
+            height: 100%;
+        }
+
+        .promo-scroll-wrapper {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .promo-scroll-text {
+            display: inline-block;
+            animation: scrollText 15s linear infinite;
+            padding-left: 100%;
+        }
+
+        .promo-text {
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .promo-highlight {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .promo-cta-btn {
+            background: var(--gold);
+            color: var(--royal-blue);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .promo-cta-btn:hover {
+            background: #e6c447;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
+            }
+
+            to {
+                text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 30px var(--gold);
+            }
         }
 
         .header-container {
@@ -149,7 +288,8 @@
             width: 30px;
             height: 21px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 3001;
+            position: relative;
         }
 
         .menu-toggle span {
@@ -185,7 +325,7 @@
             color: white;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            margin-top: 140px;
             text-align: center;
         }
 
@@ -276,31 +416,100 @@
         .gallery-grid {
             padding: 40px 0 80px;
             background: var(--snow);
+            overflow: hidden;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--royal-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(10, 46, 90, 0.3);
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--gold);
+            color: var(--royal-blue);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav-btn.prev {
+            left: 10px;
+        }
+
+        .gallery-nav-btn.next {
+            right: 10px;
         }
 
         .masonry-grid {
-            columns: 3;
-            column-gap: 20px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            padding: 20px 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .masonry-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Padding helpers for centering */
+        .masonry-grid::before,
+        .masonry-grid::after {
+            content: '';
+            flex: 0 0 auto;
+            width: calc(50% - 200px);
         }
 
         .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
+            flex: 0 0 auto;
+            width: 400px;
+            height: 500px;
             position: relative;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            transition: all 0.3s ease;
             cursor: pointer;
+            scroll-snap-align: center;
+            opacity: 0.6;
+            transform: scale(0.9);
+        }
+
+        .gallery-item.center {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-item img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
             transition: var(--transition);
         }
@@ -506,10 +715,66 @@
             opacity: 0.7;
         }
 
+        /* CTA Section */
+        .gallery-cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(10, 46, 90, 0.9), rgba(10, 46, 90, 0.9)),
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1973&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .gallery-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 20px;
+        }
+
+        .gallery-cta p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 30px;
+        }
+
+        .black-friday-offer {
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
-            .masonry-grid {
-                columns: 2;
+            .gallery-item {
+                width: 350px;
+                height: 450px;
+            }
+
+            .masonry-grid::before,
+            .masonry-grid::after {
+                width: calc(50% - 175px);
+            }
+
+            .promo-text {
+                font-size: 1.1rem;
+            }
+
+            .promo-highlight {
+                font-size: 1.1rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.9rem;
+                padding: 7px 18px;
             }
         }
 
@@ -533,7 +798,7 @@
                 justify-content: center;
                 gap: 30px;
                 transition: var(--transition);
-                z-index: 1000;
+                z-index: 3000;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
             }
 
@@ -545,24 +810,148 @@
                 display: none;
             }
 
-            .masonry-grid {
-                columns: 1;
+            .header-container {
+                flex-direction: column;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 10px 20px;
+                gap: 0;
+            }
+
+            .logo {
+                margin-bottom: 8px;
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                margin-bottom: 8px;
+            }
+
+            .gallery-item {
+                width: 300px;
+                height: 400px;
+            }
+
+            .masonry-grid::before,
+            .masonry-grid::after {
+                width: calc(50% - 150px);
             }
 
             .gallery-hero {
                 height: 40vh;
             }
-        }
 
-        @media (max-width: 576px) {
+            .promo-banner {
+                padding: 0;
+            }
+
+            .promo-content {
+                gap: 10px;
+                padding: 6px 10px;
+            }
+
+            .promo-text {
+                font-size: 1rem;
+                letter-spacing: 1.5px;
+            }
+
+            .promo-scroll-text {
+                font-size: 0.95rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .promo-scroll-wrapper {
+                margin: 0 8px;
+            }
+
             .filter-buttons {
-                flex-direction: column;
-                align-items: center;
+                gap: 8px;
             }
 
             .filter-btn {
-                width: 100%;
-                max-width: 300px;
+                padding: 7px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                max-width: 160px;
+            }
+
+            .header-container {
+                padding-right: 0;
+            }
+
+            .logo img,
+            .logo-image {
+                height: 60px;
+            }
+
+            .promo-banner {
+                padding: 0;
+            }
+
+            .promo-content {
+                gap: 8px;
+                padding: 6px 8px;
+            }
+
+            .promo-text {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .promo-scroll-text {
+                font-size: 0.85rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .promo-scroll-wrapper {
+                margin: 0 5px;
+            }
+
+            .gallery-item {
+                width: 280px;
+                height: 380px;
+            }
+
+            .masonry-grid::before,
+            .masonry-grid::after {
+                width: calc(50% - 140px);
+            }
+
+            .gallery-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .gallery-nav-btn.prev {
+                left: 5px;
+            }
+
+            .gallery-nav-btn.next {
+                right: 5px;
+            }
+
+            .filter-buttons {
+                gap: 8px;
+                padding: 0 10px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 0.85rem;
+                border-radius: 20px;
             }
 
             .gallery-info {
@@ -578,11 +967,27 @@
 </head>
 
 <body>
+    <!-- Black Friday Promo Banner -->
+    <div class="promo-banner">
+        <div class="promo-content">
+            <span class="promo-text">BLACK FRIDAY!</span>
+            <div class="promo-scroll-wrapper">
+                <span class="promo-scroll-text promo-highlight">
+                    FREE INSPECTION + 10% OFF Quote Before Sunday! • FREE INSPECTION + 10% OFF Quote Before Sunday! •
+                    FREE INSPECTION + 10% OFF Quote Before Sunday! •
+                </span>
+            </div>
+            <button class="promo-cta-btn" onclick="window.location.href='tel:+27659823727'">
+                <i class="fas fa-phone"></i> CALL NOW
+            </button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/images/logo.png" alt="King Maths Construction"
+                <img src="../images/logo.png" alt="King Maths Construction"
                     style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
             </a>
 
@@ -594,6 +999,7 @@
 
             <nav>
                 <ul id="nav-menu">
+                    <li><a href="/">Home</a></li>
                     <li><a href="/#services">Services</a></li>
                     <li><a href="/portfolio/">Portfolio</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
@@ -604,33 +1010,6 @@
             <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'">Get Free
                 Estimate</button>
         </div>
-        <style>
-            @media (max-width: 768px) {
-                .header-container {
-                    flex-direction: column;
-                    align-items: center !important;
-                    justify-content: center !important;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                    gap: 0;
-                }
-
-                .logo {
-
-                    margin-bottom: 8px;
-                    justify-content: center;
-                }
-
-                .menu-toggle {
-                    margin-bottom: 8px;
-                }
-
-                nav ul {
-                    margin-top: 12px;
-                    margin-bottom: 12px;
-                }
-            }
-        </style>
     </header>
 
     <!-- Gallery Hero -->
@@ -664,684 +1043,697 @@
     <!-- Gallery Grid -->
     <section class="gallery-grid">
         <div class="container">
-            <div class="masonry-grid">
-
-
-                <!-- Painting Projects -->
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/leak.png" alt="Leaking Toilet Ceiling">
-                    <div class="gallery-info">
-                        <h3>Leaking Toilet Ceiling</h3>
-                        <p>Premium waterproofing solutions for your home</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-                        alt="Interior Painting">
-                    <div class="gallery-info">
-                        <h3>Modern Living Room</h3>
-                        <p>Premium interior painting with family-safe coatings</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/exterior 2.jpg" alt="Exterior Home Painting">
-                    <div class="gallery-info">
-                        <h3>Double Storey Exterior Painting</h3>
-                        <p>High-quality exterior painting for modern homes</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0016.jpg" alt="Tiling Project">
-                    <div class="gallery-info">
-                        <h3>De Kuile Painting</h3>
-                        <p>High-quality painting for estates</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-                        alt="Roof Waterproofing">
-                    <div class="gallery-info">
-                        <h3>Bathroom Tiling</h3>
-                        <p>Premium bathroom waterproofing and tiling installation</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater Exterior">
-                    <div class="gallery-info">
-                        <h3>Bridgewater One</h3>
-                        <p>Interior painting project showcasing rich colors and textures</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465682013_594520159577981_7034951761903983430_n.jpg"
-                        alt="Interior painting Bridgewater Project">
-                    <div class="gallery-info">
-                        <h3>Bridgewater One</h3>
-                        <p>Interior painting project showcasing rich colors and textures</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465911545_594520182911312_8965199448761407890_n.jpg"
-                        alt="Exterior Project">
-                    <div class="gallery-info">
-                        <h3>Bridgewater One</h3>
-                        <p>Exterior Painting</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465977659_594500402913290_6966256726158886044_n.jpg"
-                        alt="Painting Project">
-                    <div class="gallery-info">
-                        <h3>Bridgewater One</h3>
-                        <p>High-quality exterior painting for modern spaces</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tiling.png" alt="Tiling Project">
-                    <div class="gallery-info">
-                        <h3>Home Bathroom Tiling</h3>
-                        <p>High-quality tiling for modern bathrooms</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tiling 2.png" alt="Tiling">
-                    <div class="gallery-info">
-                        <h3>Shower Tiling</h3>
-                        <p>Expert tiling solutions for your home</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="roofing">
-                    <img src="/images/roof.png" alt="Roof Repair">
-                    <div class="gallery-info">
-                        <h3>Roof Repair and Maintenance</h3>
-                        <p>Expert roofing solutions for your home</p>
-                        <span class="category">Roofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
-                        alt="Mold Remediation">
-                    <div class="gallery-info">
-                        <h3>Mold Remediation Project</h3>
-                        <p>After mold removal</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <!-- Waterproofing & Ceiling Projects -->
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil.jpg" alt="Ceiling Water Damage Before Repair">
-                    <div class="gallery-info">
-                        <h3>Ceiling Water Damage - Before</h3>
-                        <p>Severe ceiling water staining requiring urgent waterproofing intervention</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil 5.jpg" alt="Restored Ceiling After Waterproofing">
-                    <div class="gallery-info">
-                        <h3>Ceiling Restoration - After</h3>
-                        <p>Professionally waterproofed and repainted ceiling, water damage eliminated</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil 1.jpg" alt="Ceiling Leak Assessment">
-                    <div class="gallery-info">
-                        <h3>Ceiling Leak Assessment</h3>
-                        <p>Professional inspection of ceiling water damage and leak source identification</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil3.jpg" alt="Ceiling Water Staining Repair">
-                    <div class="gallery-info">
-                        <h3>Ceiling Water Stain Removal</h3>
-                        <p>Expert treatment of water-damaged ceiling with waterproofing application</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil 4.jpg" alt="Ceiling Waterproofing in Progress">
-                    <div class="gallery-info">
-                        <h3>Ceiling Waterproofing Process</h3>
-                        <p>Mid-stage ceiling repair showing waterproofing and sealing work</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil bef.jpg" alt="Bathroom Ceiling Before Treatment">
-                    <div class="gallery-info">
-                        <h3>Bathroom Ceiling - Before</h3>
-                        <p>Water-damaged bathroom ceiling prior to waterproofing treatment</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="waterproofing">
-                    <img src="/images/ceil af.jpg" alt="Bathroom Ceiling After Waterproofing">
-                    <div class="gallery-info">
-                        <h3>Bathroom Ceiling - After</h3>
-                        <p>Fully restored and waterproofed bathroom ceiling with pristine finish</p>
-                        <span class="category">Waterproofing</span>
-                    </div>
-                </div>
-
-                <!-- Crack Repair Projects -->
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks-before.jpg" alt="Wall Cracks Before Repair">
-                    <div class="gallery-info">
-                        <h3>Structural Wall Cracks - Before</h3>
-                        <p>Significant wall cracking requiring professional sealing and repair</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks-after.jpg" alt="Wall Cracks After Repair">
-                    <div class="gallery-info">
-                        <h3>Structural Wall Repair - After</h3>
-                        <p>Expertly sealed and finished wall with all cracks permanently repaired</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks.jpg" alt="Foundation Crack Sealing">
-                    <div class="gallery-info">
-                        <h3>Foundation Crack Treatment</h3>
-                        <p>Professional crack injection and sealing to prevent water infiltration</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks 1.jpg" alt="Exterior Wall Crack Repair">
-                    <div class="gallery-info">
-                        <h3>Exterior Wall Crack Sealing</h3>
-                        <p>Weather-resistant crack filling on exterior walls for long-term protection</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks 2.jpg" alt="Interior Crack Repair Work">
-                    <div class="gallery-info">
-                        <h3>Interior Crack Restoration</h3>
-                        <p>Detailed crack repair and surface preparation for painting</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/cracks 3.jpg" alt="Multiple Crack Repair Project">
-                    <div class="gallery-info">
-                        <h3>Comprehensive Crack Repair</h3>
-                        <p>Multiple crack lines sealed and reinforced for structural integrity</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <!-- Mold Removal Projects -->
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/mold-before.jpg" alt="Severe Mold Infestation Before Treatment">
-                    <div class="gallery-info">
-                        <h3>Severe Mold Damage - Before</h3>
-                        <p>Extensive mold growth on walls requiring professional remediation</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/mold-after.jpg" alt="Mold-Free Wall After Treatment">
-                    <div class="gallery-info">
-                        <h3>Mold Remediation - After</h3>
-                        <p>Complete mold removal with antimicrobial treatment and fresh paint</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <!-- Exterior & Painting Projects -->
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/exterior.jpg" alt="Modern Home Exterior Painting">
-                    <div class="gallery-info">
-                        <h3>Contemporary Exterior Paint Finish</h3>
-                        <p>High-quality weather-resistant paint application on modern home exterior</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <!-- Tiling Projects -->
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tile 1.jpg" alt="Floor Tile Installation">
-                    <div class="gallery-info">
-                        <h3>Premium Floor Tiling</h3>
-                        <p>Expert installation of high-quality floor tiles with precision alignment</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tile 2.jpg" alt="Bathroom Wall Tiling">
-                    <div class="gallery-info">
-                        <h3>Bathroom Wall Tile Installation</h3>
-                        <p>Professional bathroom tiling with waterproof backing and neat grouting</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tile 3.jpg" alt="Kitchen Backsplash Tiling">
-                    <div class="gallery-info">
-                        <h3>Kitchen Tile Work</h3>
-                        <p>Custom tile installation for kitchen walls and backsplash areas</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="tiling">
-                    <img src="/images/tile 4.jpg" alt="Large Format Tile Installation">
-                    <div class="gallery-info">
-                        <h3>Large Format Tile Layout</h3>
-                        <p>Modern large-format tile installation with minimal grout lines</p>
-                        <span class="category">Tiling</span>
-                    </div>
-                </div>
-
-                <!-- Bathroom Renovation Projects -->
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/bathroom bef.jpg" alt="Bathroom Before Renovation">
-                    <div class="gallery-info">
-                        <h3>Bathroom Renovation - Before</h3>
-                        <p>Outdated bathroom requiring complete waterproofing and modernization</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/bathroom aft.jpg" alt="Bathroom After Renovation">
-                    <div class="gallery-info">
-                        <h3>Bathroom Renovation - After</h3>
-                        <p>Fully renovated bathroom with waterproofing, tiling, and modern finishes</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <!-- Roofing Projects -->
-                <div class="gallery-item" data-category="roofing">
-                    <img src="/images/roofing.jpg" alt="Roof Repair and Maintenance Work">
-                    <div class="gallery-info">
-                        <h3>Professional Roof Maintenance</h3>
-                        <p>Expert roof inspection, repair, and waterproofing services</p>
-                        <span class="category">Roofing</span>
+            <div class="gallery-wrapper">
+                <button class="gallery-nav-btn prev" id="gallery-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav-btn next" id="gallery-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="masonry-grid" id="gallery-container">
+
+
+                    <!-- Painting Projects -->
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/leak.png" alt="Leaking Toilet Ceiling">
+                        <div class="gallery-info">
+                            <h3>Leaking Toilet Ceiling</h3>
+                            <p>Premium waterproofing solutions for your home</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                            alt="Interior Painting">
+                        <div class="gallery-info">
+                            <h3>Modern Living Room</h3>
+                            <p>Premium interior painting with family-safe coatings</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/exterior 2.jpg" alt="Exterior Home Painting">
+                        <div class="gallery-info">
+                            <h3>Double Storey Exterior Painting</h3>
+                            <p>High-quality exterior painting for modern homes</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0016.jpg" alt="Tiling Project">
+                        <div class="gallery-info">
+                            <h3>De Kuile Painting</h3>
+                            <p>High-quality painting for estates</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                            alt="Roof Waterproofing">
+                        <div class="gallery-info">
+                            <h3>Bathroom Tiling</h3>
+                            <p>Premium bathroom waterproofing and tiling installation</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater Exterior">
+                        <div class="gallery-info">
+                            <h3>Bridgewater One</h3>
+                            <p>Interior painting project showcasing rich colors and textures</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/465682013_594520159577981_7034951761903983430_n.jpg"
+                            alt="Interior painting Bridgewater Project">
+                        <div class="gallery-info">
+                            <h3>Bridgewater One</h3>
+                            <p>Interior painting project showcasing rich colors and textures</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/465911545_594520182911312_8965199448761407890_n.jpg"
+                            alt="Exterior Project">
+                        <div class="gallery-info">
+                            <h3>Bridgewater One</h3>
+                            <p>Exterior Painting</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/465977659_594500402913290_6966256726158886044_n.jpg"
+                            alt="Painting Project">
+                        <div class="gallery-info">
+                            <h3>Bridgewater One</h3>
+                            <p>High-quality exterior painting for modern spaces</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tiling.png" alt="Tiling Project">
+                        <div class="gallery-info">
+                            <h3>Home Bathroom Tiling</h3>
+                            <p>High-quality tiling for modern bathrooms</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tiling 2.png" alt="Tiling">
+                        <div class="gallery-info">
+                            <h3>Shower Tiling</h3>
+                            <p>Expert tiling solutions for your home</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="roofing">
+                        <img src="/images/roof.png" alt="Roof Repair">
+                        <div class="gallery-info">
+                            <h3>Roof Repair and Maintenance</h3>
+                            <p>Expert roofing solutions for your home</p>
+                            <span class="category">Roofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                            alt="Mold Remediation">
+                        <div class="gallery-info">
+                            <h3>Mold Remediation Project</h3>
+                            <p>After mold removal</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <!-- Waterproofing & Ceiling Projects -->
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil.jpg" alt="Ceiling Water Damage Before Repair">
+                        <div class="gallery-info">
+                            <h3>Ceiling Water Damage - Before</h3>
+                            <p>Severe ceiling water staining requiring urgent waterproofing intervention</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil 5.jpg" alt="Restored Ceiling After Waterproofing">
+                        <div class="gallery-info">
+                            <h3>Ceiling Restoration - After</h3>
+                            <p>Professionally waterproofed and repainted ceiling, water damage eliminated</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil 1.jpg" alt="Ceiling Leak Assessment">
+                        <div class="gallery-info">
+                            <h3>Ceiling Leak Assessment</h3>
+                            <p>Professional inspection of ceiling water damage and leak source identification</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil3.jpg" alt="Ceiling Water Staining Repair">
+                        <div class="gallery-info">
+                            <h3>Ceiling Water Stain Removal</h3>
+                            <p>Expert treatment of water-damaged ceiling with waterproofing application</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil 4.jpg" alt="Ceiling Waterproofing in Progress">
+                        <div class="gallery-info">
+                            <h3>Ceiling Waterproofing Process</h3>
+                            <p>Mid-stage ceiling repair showing waterproofing and sealing work</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil bef.jpg" alt="Bathroom Ceiling Before Treatment">
+                        <div class="gallery-info">
+                            <h3>Bathroom Ceiling - Before</h3>
+                            <p>Water-damaged bathroom ceiling prior to waterproofing treatment</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="waterproofing">
+                        <img src="/images/ceil af.jpg" alt="Bathroom Ceiling After Waterproofing">
+                        <div class="gallery-info">
+                            <h3>Bathroom Ceiling - After</h3>
+                            <p>Fully restored and waterproofed bathroom ceiling with pristine finish</p>
+                            <span class="category">Waterproofing</span>
+                        </div>
+                    </div>
+
+                    <!-- Crack Repair Projects -->
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks-before.jpg" alt="Wall Cracks Before Repair">
+                        <div class="gallery-info">
+                            <h3>Structural Wall Cracks - Before</h3>
+                            <p>Significant wall cracking requiring professional sealing and repair</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks-after.jpg" alt="Wall Cracks After Repair">
+                        <div class="gallery-info">
+                            <h3>Structural Wall Repair - After</h3>
+                            <p>Expertly sealed and finished wall with all cracks permanently repaired</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks.jpg" alt="Foundation Crack Sealing">
+                        <div class="gallery-info">
+                            <h3>Foundation Crack Treatment</h3>
+                            <p>Professional crack injection and sealing to prevent water infiltration</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks 1.jpg" alt="Exterior Wall Crack Repair">
+                        <div class="gallery-info">
+                            <h3>Exterior Wall Crack Sealing</h3>
+                            <p>Weather-resistant crack filling on exterior walls for long-term protection</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks 2.jpg" alt="Interior Crack Repair Work">
+                        <div class="gallery-info">
+                            <h3>Interior Crack Restoration</h3>
+                            <p>Detailed crack repair and surface preparation for painting</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/cracks 3.jpg" alt="Multiple Crack Repair Project">
+                        <div class="gallery-info">
+                            <h3>Comprehensive Crack Repair</h3>
+                            <p>Multiple crack lines sealed and reinforced for structural integrity</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <!-- Mold Removal Projects -->
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/mold-before.jpg" alt="Severe Mold Infestation Before Treatment">
+                        <div class="gallery-info">
+                            <h3>Severe Mold Damage - Before</h3>
+                            <p>Extensive mold growth on walls requiring professional remediation</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/mold-after.jpg" alt="Mold-Free Wall After Treatment">
+                        <div class="gallery-info">
+                            <h3>Mold Remediation - After</h3>
+                            <p>Complete mold removal with antimicrobial treatment and fresh paint</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <!-- Exterior & Painting Projects -->
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/exterior.jpg" alt="Modern Home Exterior Painting">
+                        <div class="gallery-info">
+                            <h3>Contemporary Exterior Paint Finish</h3>
+                            <p>High-quality weather-resistant paint application on modern home exterior</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <!-- Tiling Projects -->
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tile 1.jpg" alt="Floor Tile Installation">
+                        <div class="gallery-info">
+                            <h3>Premium Floor Tiling</h3>
+                            <p>Expert installation of high-quality floor tiles with precision alignment</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tile 2.jpg" alt="Bathroom Wall Tiling">
+                        <div class="gallery-info">
+                            <h3>Bathroom Wall Tile Installation</h3>
+                            <p>Professional bathroom tiling with waterproof backing and neat grouting</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tile 3.jpg" alt="Kitchen Backsplash Tiling">
+                        <div class="gallery-info">
+                            <h3>Kitchen Tile Work</h3>
+                            <p>Custom tile installation for kitchen walls and backsplash areas</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="tiling">
+                        <img src="/images/tile 4.jpg" alt="Large Format Tile Installation">
+                        <div class="gallery-info">
+                            <h3>Large Format Tile Layout</h3>
+                            <p>Modern large-format tile installation with minimal grout lines</p>
+                            <span class="category">Tiling</span>
+                        </div>
+                    </div>
+
+                    <!-- Bathroom Renovation Projects -->
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/bathroom bef.jpg" alt="Bathroom Before Renovation">
+                        <div class="gallery-info">
+                            <h3>Bathroom Renovation - Before</h3>
+                            <p>Outdated bathroom requiring complete waterproofing and modernization</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/bathroom aft.jpg" alt="Bathroom After Renovation">
+                        <div class="gallery-info">
+                            <h3>Bathroom Renovation - After</h3>
+                            <p>Fully renovated bathroom with waterproofing, tiling, and modern finishes</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <!-- Roofing Projects -->
+                    <div class="gallery-item" data-category="roofing">
+                        <img src="/images/roofing.jpg" alt="Roof Repair and Maintenance Work">
+                        <div class="gallery-info">
+                            <h3>Professional Roof Maintenance</h3>
+                            <p>Expert roof inspection, repair, and waterproofing services</p>
+                            <span class="category">Roofing</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional General Projects -->
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/more.jpg" alt="General Renovation Work">
+                        <div class="gallery-info">
+                            <h3>Property Upgrade Project</h3>
+                            <p>Comprehensive renovation enhancing property value and appearance</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/more 1.jpg" alt="Interior Renovation Detail">
+                        <div class="gallery-info">
+                            <h3>Interior Restoration Work</h3>
+                            <p>Detailed interior renovation with quality materials and finishes</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/more 3.jpg" alt="Home Improvement Project">
+                        <div class="gallery-info">
+                            <h3>Home Improvement Upgrade</h3>
+                            <p>Multi-aspect renovation improving functionality and aesthetics</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="renovation">
+                        <img src="/images/more4.jpg" alt="Property Enhancement Work">
+                        <div class="gallery-info">
+                            <h3>Property Enhancement Project</h3>
+                            <p>Professional renovation work transforming living spaces</p>
+                            <span class="category">Renovation</span>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Image Projects from June 2025 -->
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0005.jpg" alt="Residential Painting Project">
+                        <div class="gallery-info">
+                            <h3>Residential Paint Application</h3>
+                            <p>Professional interior/exterior painting with premium finish</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0006.jpg" alt="Quality Paintwork Detail">
+                        <div class="gallery-info">
+                            <h3>Premium Paint Finish</h3>
+                            <p>High-quality paint application showcasing expert craftsmanship</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0007.jpg" alt="Exterior Paint Project">
+                        <div class="gallery-info">
+                            <h3>Exterior Painting Service</h3>
+                            <p>Weather-resistant exterior paint application for lasting protection</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0008.jpg" alt="Commercial Painting Work">
+                        <div class="gallery-info">
+                            <h3>Commercial Paint Project</h3>
+                            <p>Large-scale painting project with professional finish</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0009.jpg" alt="Interior Wall Painting">
+                        <div class="gallery-info">
+                            <h3>Interior Wall Treatment</h3>
+                            <p>Fresh interior paint application with smooth, even coverage</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0011.jpg" alt="Multi-Room Painting Project">
+                        <div class="gallery-info">
+                            <h3>Multi-Room Paint Transformation</h3>
+                            <p>Complete home painting with coordinated color scheme</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0012.jpg" alt="Fresh Paint Application">
+                        <div class="gallery-info">
+                            <h3>Fresh Paint Installation</h3>
+                            <p>New paint application revitalizing interior spaces</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0013.jpg" alt="Wall Preparation and Painting">
+                        <div class="gallery-info">
+                            <h3>Wall Prep & Paint Work</h3>
+                            <p>Professional surface preparation before quality paint application</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0014.jpg" alt="Ceiling Painting Service">
+                        <div class="gallery-info">
+                            <h3>Ceiling Paint Treatment</h3>
+                            <p>Expert ceiling painting with anti-drip, smooth finish</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0015.jpg" alt="Trim and Detail Painting">
+                        <div class="gallery-info">
+                            <h3>Trim & Detail Work</h3>
+                            <p>Precise painting of trim, doors, and architectural details</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0017.jpg" alt="Full House Painting">
+                        <div class="gallery-info">
+                            <h3>Complete House Painting</h3>
+                            <p>Whole-property paint transformation with quality materials</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0018.jpg" alt="Feature Wall Painting">
+                        <div class="gallery-info">
+                            <h3>Feature Wall Creation</h3>
+                            <p>Accent wall painting adding character to living spaces</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0019.jpg" alt="Room Makeover Paint Job">
+                        <div class="gallery-info">
+                            <h3>Room Transformation</h3>
+                            <p>Complete room makeover with fresh paint and modern colors</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0020.jpg" alt="Exterior Facade Painting">
+                        <div class="gallery-info">
+                            <h3>Exterior Facade Treatment</h3>
+                            <p>Complete exterior facade painting enhancing curb appeal</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0021.jpg" alt="Property Paint Upgrade">
+                        <div class="gallery-info">
+                            <h3>Property Paint Upgrade</h3>
+                            <p>Comprehensive painting service increasing property value</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/IMG-20250627-WA0022.jpg" alt="Final Paint Inspection">
+                        <div class="gallery-info">
+                            <h3>Quality Paint Completion</h3>
+                            <p>Final inspection showing immaculate paint finish and cleanup</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional WhatsApp Images -->
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/WhatsApp Image 2025-06-27 at 20.35.48_1f4c383b.jpg"
+                            alt="Evening Paint Project">
+                        <div class="gallery-info">
+                            <h3>Quality Evening Work</h3>
+                            <p>Dedicated painting service with attention to detail</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/WhatsApp Image 2025-06-27 at 20.35.49_354747cf.jpg"
+                            alt="Paint Progress Check">
+                        <div class="gallery-info">
+                            <h3>Paint Application Progress</h3>
+                            <p>Mid-project quality check ensuring perfect results</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/WhatsApp Image 2025-06-27 at 20.35.50_3eefa157.jpg"
+                            alt="Paint Quality Control">
+                        <div class="gallery-info">
+                            <h3>Paint Quality Assurance</h3>
+                            <p>Professional quality control during paint application</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/WhatsApp Image 2025-06-27 at 20.35.53_8467f3b4.jpg" alt="Detailed Paint Work">
+                        <div class="gallery-info">
+                            <h3>Detailed Paint Craftsmanship</h3>
+                            <p>Expert painting technique on display</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/WhatsApp Image 2025-06-27 at 20.35.56_94e48c16.jpg"
+                            alt="Paint Project Completion">
+                        <div class="gallery-info">
+                            <h3>Completed Paint Service</h3>
+                            <p>Finished painting project ready for client handover</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent October 2025 Projects -->
+                    <div class="gallery-item" data-category="paving">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.15.14 PM.jpeg"
+                            alt="Paving Installation October 2025">
+                        <div class="gallery-info">
+                            <h3>Premium Paving Installation</h3>
+                            <p>Crown Cobblestone paving project with interlocking pavers</p>
+                            <span class="category">Paving</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="paving">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.15.37 PM.jpeg" alt="Driveway Paving Project">
+                        <div class="gallery-info">
+                            <h3>Driveway Paving Work</h3>
+                            <p>Professional driveway paving with premium stone pavers</p>
+                            <span class="category">Paving</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="paving">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.15.38 PM.jpeg" alt="Patio Paving Installation">
+                        <div class="gallery-info">
+                            <h3>Patio Paving Service</h3>
+                            <p>Expert patio paving with custom pattern arrangement</p>
+                            <span class="category">Paving</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="turf">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.15.39 PM.jpeg"
+                            alt="Synthetic Turf Installation">
+                        <div class="gallery-info">
+                            <h3>Royal Turf Installation</h3>
+                            <p>Premium synthetic grass installation for residential property</p>
+                            <span class="category">Turf</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="turf">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.21.41 PM.jpeg" alt="Artificial Grass Laying">
+                        <div class="gallery-info">
+                            <h3>Artificial Grass Installation</h3>
+                            <p>Royal Turf synthetic grass with UV-stabilized fibers</p>
+                            <span class="category">Turf</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="turf">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.21.57 PM.jpeg"
+                            alt="Completed Turf Installation">
+                        <div class="gallery-info">
+                            <h3>Turf Installation Complete</h3>
+                            <p>Finished synthetic turf project with lush green appearance</p>
+                            <span class="category">Turf</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="paving">
+                        <img src="/images/WhatsApp Image 2025-10-30 at 2.21.58 PM.jpeg" alt="Cobblestone Paving Detail">
+                        <div class="gallery-info">
+                            <h3>Cobblestone Paving Detail</h3>
+                            <p>Crown Cobblestone with herringbone pattern installation</p>
+                            <span class="category">Paving</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Featured Project -->
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/469681733_615975094099154_857653448742105082_n.jpg"
+                            alt="Featured Social Media Project">
+                        <div class="gallery-info">
+                            <h3>Featured Project Showcase</h3>
+                            <p>Highlighted project demonstrating our royal-grade craftsmanship</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <!-- Additional Bridgewater Projects -->
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/465795169_594520149577982_7588394275861740328_n.jpg"
+                            alt="Bridgewater Interior Detail">
+                        <div class="gallery-info">
+                            <h3>Bridgewater Interior Detail</h3>
+                            <p>Detailed interior finishing at Bridgewater estate project</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/465928156_594520109577986_3454071221753276610_n.jpg"
+                            alt="Bridgewater Wall Treatment">
+                        <div class="gallery-info">
+                            <h3>Bridgewater Wall Finishing</h3>
+                            <p>Premium wall treatment and painting at Bridgewater development</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/bridgewater one/466001148_594520192911311_3464684150075992976_n.jpg"
+                            alt="Bridgewater Final Touches">
+                        <div class="gallery-info">
+                            <h3>Bridgewater Final Touches</h3>
+                            <p>Completion work on Bridgewater residential painting project</p>
+                            <span class="category">Painting</span>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Additional General Projects -->
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/more.jpg" alt="General Renovation Work">
-                    <div class="gallery-info">
-                        <h3>Property Upgrade Project</h3>
-                        <p>Comprehensive renovation enhancing property value and appearance</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/more 1.jpg" alt="Interior Renovation Detail">
-                    <div class="gallery-info">
-                        <h3>Interior Restoration Work</h3>
-                        <p>Detailed interior renovation with quality materials and finishes</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/more 3.jpg" alt="Home Improvement Project">
-                    <div class="gallery-info">
-                        <h3>Home Improvement Upgrade</h3>
-                        <p>Multi-aspect renovation improving functionality and aesthetics</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="renovation">
-                    <img src="/images/more4.jpg" alt="Property Enhancement Work">
-                    <div class="gallery-info">
-                        <h3>Property Enhancement Project</h3>
-                        <p>Professional renovation work transforming living spaces</p>
-                        <span class="category">Renovation</span>
-                    </div>
-                </div>
-
-                <!-- WhatsApp Image Projects from June 2025 -->
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0005.jpg" alt="Residential Painting Project">
-                    <div class="gallery-info">
-                        <h3>Residential Paint Application</h3>
-                        <p>Professional interior/exterior painting with premium finish</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0006.jpg" alt="Quality Paintwork Detail">
-                    <div class="gallery-info">
-                        <h3>Premium Paint Finish</h3>
-                        <p>High-quality paint application showcasing expert craftsmanship</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0007.jpg" alt="Exterior Paint Project">
-                    <div class="gallery-info">
-                        <h3>Exterior Painting Service</h3>
-                        <p>Weather-resistant exterior paint application for lasting protection</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0008.jpg" alt="Commercial Painting Work">
-                    <div class="gallery-info">
-                        <h3>Commercial Paint Project</h3>
-                        <p>Large-scale painting project with professional finish</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0009.jpg" alt="Interior Wall Painting">
-                    <div class="gallery-info">
-                        <h3>Interior Wall Treatment</h3>
-                        <p>Fresh interior paint application with smooth, even coverage</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0011.jpg" alt="Multi-Room Painting Project">
-                    <div class="gallery-info">
-                        <h3>Multi-Room Paint Transformation</h3>
-                        <p>Complete home painting with coordinated color scheme</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0012.jpg" alt="Fresh Paint Application">
-                    <div class="gallery-info">
-                        <h3>Fresh Paint Installation</h3>
-                        <p>New paint application revitalizing interior spaces</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0013.jpg" alt="Wall Preparation and Painting">
-                    <div class="gallery-info">
-                        <h3>Wall Prep & Paint Work</h3>
-                        <p>Professional surface preparation before quality paint application</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0014.jpg" alt="Ceiling Painting Service">
-                    <div class="gallery-info">
-                        <h3>Ceiling Paint Treatment</h3>
-                        <p>Expert ceiling painting with anti-drip, smooth finish</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0015.jpg" alt="Trim and Detail Painting">
-                    <div class="gallery-info">
-                        <h3>Trim & Detail Work</h3>
-                        <p>Precise painting of trim, doors, and architectural details</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0017.jpg" alt="Full House Painting">
-                    <div class="gallery-info">
-                        <h3>Complete House Painting</h3>
-                        <p>Whole-property paint transformation with quality materials</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0018.jpg" alt="Feature Wall Painting">
-                    <div class="gallery-info">
-                        <h3>Feature Wall Creation</h3>
-                        <p>Accent wall painting adding character to living spaces</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0019.jpg" alt="Room Makeover Paint Job">
-                    <div class="gallery-info">
-                        <h3>Room Transformation</h3>
-                        <p>Complete room makeover with fresh paint and modern colors</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0020.jpg" alt="Exterior Facade Painting">
-                    <div class="gallery-info">
-                        <h3>Exterior Facade Treatment</h3>
-                        <p>Complete exterior facade painting enhancing curb appeal</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0021.jpg" alt="Property Paint Upgrade">
-                    <div class="gallery-info">
-                        <h3>Property Paint Upgrade</h3>
-                        <p>Comprehensive painting service increasing property value</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/IMG-20250627-WA0022.jpg" alt="Final Paint Inspection">
-                    <div class="gallery-info">
-                        <h3>Quality Paint Completion</h3>
-                        <p>Final inspection showing immaculate paint finish and cleanup</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <!-- Additional WhatsApp Images -->
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.48_1f4c383b.jpg" alt="Evening Paint Project">
-                    <div class="gallery-info">
-                        <h3>Quality Evening Work</h3>
-                        <p>Dedicated painting service with attention to detail</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.49_354747cf.jpg" alt="Paint Progress Check">
-                    <div class="gallery-info">
-                        <h3>Paint Application Progress</h3>
-                        <p>Mid-project quality check ensuring perfect results</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.50_3eefa157.jpg" alt="Paint Quality Control">
-                    <div class="gallery-info">
-                        <h3>Paint Quality Assurance</h3>
-                        <p>Professional quality control during paint application</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.53_8467f3b4.jpg" alt="Detailed Paint Work">
-                    <div class="gallery-info">
-                        <h3>Detailed Paint Craftsmanship</h3>
-                        <p>Expert painting technique on display</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/WhatsApp Image 2025-06-27 at 20.35.56_94e48c16.jpg"
-                        alt="Paint Project Completion">
-                    <div class="gallery-info">
-                        <h3>Completed Paint Service</h3>
-                        <p>Finished painting project ready for client handover</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <!-- Recent October 2025 Projects -->
-                <div class="gallery-item" data-category="paving">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.14 PM.jpeg"
-                        alt="Paving Installation October 2025">
-                    <div class="gallery-info">
-                        <h3>Premium Paving Installation</h3>
-                        <p>Crown Cobblestone paving project with interlocking pavers</p>
-                        <span class="category">Paving</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="paving">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.37 PM.jpeg" alt="Driveway Paving Project">
-                    <div class="gallery-info">
-                        <h3>Driveway Paving Work</h3>
-                        <p>Professional driveway paving with premium stone pavers</p>
-                        <span class="category">Paving</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="paving">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.38 PM.jpeg" alt="Patio Paving Installation">
-                    <div class="gallery-info">
-                        <h3>Patio Paving Service</h3>
-                        <p>Expert patio paving with custom pattern arrangement</p>
-                        <span class="category">Paving</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="turf">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.15.39 PM.jpeg" alt="Synthetic Turf Installation">
-                    <div class="gallery-info">
-                        <h3>Royal Turf Installation</h3>
-                        <p>Premium synthetic grass installation for residential property</p>
-                        <span class="category">Turf</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="turf">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.41 PM.jpeg" alt="Artificial Grass Laying">
-                    <div class="gallery-info">
-                        <h3>Artificial Grass Installation</h3>
-                        <p>Royal Turf synthetic grass with UV-stabilized fibers</p>
-                        <span class="category">Turf</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="turf">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.57 PM.jpeg" alt="Completed Turf Installation">
-                    <div class="gallery-info">
-                        <h3>Turf Installation Complete</h3>
-                        <p>Finished synthetic turf project with lush green appearance</p>
-                        <span class="category">Turf</span>
-                    </div>
-                </div>
 
-                <div class="gallery-item" data-category="paving">
-                    <img src="/images/WhatsApp Image 2025-10-30 at 2.21.58 PM.jpeg" alt="Cobblestone Paving Detail">
-                    <div class="gallery-info">
-                        <h3>Cobblestone Paving Detail</h3>
-                        <p>Crown Cobblestone with herringbone pattern installation</p>
-                        <span class="category">Paving</span>
-                    </div>
-                </div>
-
-                <!-- Social Media Featured Project -->
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/469681733_615975094099154_857653448742105082_n.jpg"
-                        alt="Featured Social Media Project">
-                    <div class="gallery-info">
-                        <h3>Featured Project Showcase</h3>
-                        <p>Highlighted project demonstrating our royal-grade craftsmanship</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <!-- Additional Bridgewater Projects -->
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465795169_594520149577982_7588394275861740328_n.jpg"
-                        alt="Bridgewater Interior Detail">
-                    <div class="gallery-info">
-                        <h3>Bridgewater Interior Detail</h3>
-                        <p>Detailed interior finishing at Bridgewater estate project</p>
-                        <span class="category">Painting</span>
-                    </div>
                 </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/465928156_594520109577986_3454071221753276610_n.jpg"
-                        alt="Bridgewater Wall Treatment">
-                    <div class="gallery-info">
-                        <h3>Bridgewater Wall Finishing</h3>
-                        <p>Premium wall treatment and painting at Bridgewater development</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="painting">
-                    <img src="/images/bridgewater one/466001148_594520192911311_3464684150075992976_n.jpg"
-                        alt="Bridgewater Final Touches">
-                    <div class="gallery-info">
-                        <h3>Bridgewater Final Touches</h3>
-                        <p>Completion work on Bridgewater residential painting project</p>
-                        <span class="category">Painting</span>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1361,6 +1753,27 @@
             <i class="fas fa-chevron-right"></i>
         </div>
     </div>
+
+    <!-- CTA Section -->
+    <section class="gallery-cta">
+        <div class="gallery-cta-content">
+            <h2>Love What You See?</h2>
+            <p>Get the same royal-grade craftsmanship for your home</p>
+
+            <div class="black-friday-offer">
+                <h3 style="font-size: 1.6rem; color: var(--gold); margin-bottom: 10px;"><i class="fas fa-crown"></i>
+                    BLACK FRIDAY SPECIAL!</h3>
+                <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">FREE INSPECTION - CALL US NOW!</p>
+                <p style="font-size: 0.95rem; margin-bottom: 8px;">Offer valid until 30 November 2025</p>
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold);">🎉 BONUS: 10% OFF QUOTE when you
+                    call us before Sunday!</p>
+            </div>
+
+            <button class="cta-button" onclick="window.location.href='tel:+27659823727'" style="margin-top: 20px;">
+                <i class="fas fa-phone"></i> Call Now for Free Inspection
+            </button>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer id="contact">
@@ -1461,9 +1874,101 @@
             const lightboxClose = document.querySelector('.lightbox-close');
             const lightboxPrev = document.querySelector('.lightbox-prev');
             const lightboxNext = document.querySelector('.lightbox-next');
+            const galleryContainer = document.getElementById('gallery-container');
+            const galleryPrevBtn = document.getElementById('gallery-prev');
+            const galleryNextBtn = document.getElementById('gallery-next');
 
             let currentImageIndex = 0;
             const images = Array.from(galleryItems);
+
+            // Function to update centered item
+            function updateCenteredItem() {
+                const containerRect = galleryContainer.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+
+                let closestItem = null;
+                let closestDistance = Infinity;
+
+                galleryItems.forEach(item => {
+                    if (item.style.display !== 'none') {
+                        const itemRect = item.getBoundingClientRect();
+                        const itemCenter = itemRect.left + itemRect.width / 2;
+                        const distance = Math.abs(containerCenter - itemCenter);
+
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestItem = item;
+                        }
+                    }
+                });
+
+                // Remove center class from all items
+                galleryItems.forEach(item => item.classList.remove('center'));
+
+                // Add center class to closest item
+                if (closestItem) {
+                    closestItem.classList.add('center');
+                }
+            }
+
+            // Update centered item on scroll
+            galleryContainer.addEventListener('scroll', updateCenteredItem);
+
+            // Initialize centered item
+            setTimeout(updateCenteredItem, 100);
+
+            // Gallery scroll navigation
+            galleryPrevBtn.addEventListener('click', function () {
+                const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+                const containerRect = galleryContainer.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+
+                // Find current centered item
+                let currentIndex = -1;
+                visibleItems.forEach((item, index) => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenter = itemRect.left + itemRect.width / 2;
+                    if (Math.abs(containerCenter - itemCenter) < 100) {
+                        currentIndex = index;
+                    }
+                });
+
+                // Scroll to previous item
+                const prevIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+                if (visibleItems[prevIndex]) {
+                    visibleItems[prevIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }
+            });
+
+            galleryNextBtn.addEventListener('click', function () {
+                const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+                const containerRect = galleryContainer.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+
+                // Find current centered item
+                let currentIndex = -1;
+                visibleItems.forEach((item, index) => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenter = itemRect.left + itemRect.width / 2;
+                    if (Math.abs(containerCenter - itemCenter) < 100) {
+                        currentIndex = index;
+                    }
+                });
+
+                // Scroll to next item
+                const nextIndex = currentIndex < visibleItems.length - 1 ? currentIndex + 1 : visibleItems.length - 1;
+                if (visibleItems[nextIndex]) {
+                    visibleItems[nextIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }
+            });
 
             // Filter functionality
             filterButtons.forEach(button => {
@@ -1483,6 +1988,19 @@
                             item.style.display = 'none';
                         }
                     });
+
+                    // Find first visible item and scroll to center it
+                    setTimeout(() => {
+                        const firstVisible = Array.from(galleryItems).find(item => item.style.display !== 'none');
+                        if (firstVisible) {
+                            firstVisible.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        }
+                        updateCenteredItem();
+                    }, 100);
                 });
             });
 
@@ -1500,6 +2018,19 @@
                         item.style.display = 'none';
                     }
                 });
+
+                // Find first visible item and scroll to center it
+                setTimeout(() => {
+                    const firstVisible = Array.from(galleryItems).find(item => item.style.display !== 'none');
+                    if (firstVisible) {
+                        firstVisible.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }
+                    updateCenteredItem();
+                }, 100);
             });
 
             // Lightbox functionality

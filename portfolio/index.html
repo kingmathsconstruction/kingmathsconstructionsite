@@ -27,12 +27,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: var(--snow);
             color: var(--charcoal);
             overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
         }
 
         .container {
@@ -48,10 +54,143 @@
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 42px;
+            margin: 0;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
+            border-top: 0;
+        }
+
+        /* Black Friday Marquee Banner */
+        .promo-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            color: white;
+            padding: 0;
+            margin: 0;
+            z-index: 1001;
+            overflow: hidden;
+            border: 0;
+            box-shadow: none;
+            line-height: 1;
+            display: block;
+            height: 42px;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            animation: slideIn 0.5s ease-out;
+            padding: 10px 20px;
+            white-space: nowrap;
+            margin: 0;
+            line-height: 1.2;
+            height: 100%;
+        }
+
+        .promo-scroll-wrapper {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .promo-scroll-text {
+            display: inline-block;
+            animation: scrollText 15s linear infinite;
+            padding-left: 100%;
+        }
+
+        .promo-text {
+            font-weight: 800;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .promo-highlight {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .promo-cta-btn {
+            background: var(--gold);
+            color: var(--royal-blue);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .promo-cta-btn:hover {
+            background: #e6c447;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
+            }
+
+            to {
+                text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 30px var(--gold);
+            }
         }
 
         .header-container {
@@ -149,7 +288,8 @@
             width: 30px;
             height: 21px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 2001;
+            position: relative;
         }
 
         .menu-toggle span {
@@ -181,7 +321,7 @@
             min-height: calc(100vh - 103px);
             display: flex;
             align-items: center;
-            margin-top: 120px;
+            margin-top: 103px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -541,6 +681,19 @@
             .portfolio-grid {
                 gap: 30px;
             }
+
+            .promo-text {
+                font-size: 1.1rem;
+            }
+
+            .promo-highlight {
+                font-size: 1.1rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.9rem;
+                padding: 7px 18px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -563,7 +716,7 @@
                 justify-content: center;
                 gap: 30px;
                 transition: var(--transition);
-                z-index: 1000;
+                z-index: 2000;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
             }
 
@@ -583,6 +736,33 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+
+            .promo-banner {
+                padding: 0;
+            }
+
+            .promo-content {
+                gap: 10px;
+                padding: 6px 10px;
+            }
+
+            .promo-text {
+                font-size: 1rem;
+                letter-spacing: 1.5px;
+            }
+
+            .promo-scroll-text {
+                font-size: 0.95rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .promo-scroll-wrapper {
+                margin: 0 8px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -594,17 +774,59 @@
                 font-size: 0.8rem;
                 padding: 6px 12px;
             }
+
+            .promo-banner {
+                padding: 0;
+            }
+
+            .promo-content {
+                gap: 8px;
+                padding: 6px 8px;
+            }
+
+            .promo-text {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .promo-scroll-text {
+                font-size: 0.85rem;
+            }
+
+            .promo-cta-btn {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .promo-scroll-wrapper {
+                margin: 0 5px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Black Friday Promo Banner -->
+    <div class="promo-banner">
+        <div class="promo-content">
+            <span class="promo-text">BLACK FRIDAY!</span>
+            <div class="promo-scroll-wrapper">
+                <span class="promo-scroll-text promo-highlight">
+                    FREE INSPECTION + 10% OFF Quote Before Sunday! • FREE INSPECTION + 10% OFF Quote Before Sunday! •
+                    FREE INSPECTION + 10% OFF Quote Before Sunday! •
+                </span>
+            </div>
+            <button class="promo-cta-btn" onclick="window.location.href='tel:+27659823727'">
+                <i class="fas fa-phone"></i> CALL NOW
+            </button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/images/logo.png" alt="King Maths Construction"
+            <a href="#" class="logo" style="text-decoration: none;">
+                <img src="../images/logo.png" alt="King Maths Construction"
                     style="height:88px; width:auto; display:block; margin-left:auto; margin-right:auto;">
             </a>
 
@@ -616,6 +838,7 @@
 
             <nav>
                 <ul id="nav-menu">
+                    <li><a href="/">Home</a></li>
                     <li><a href="/#services">Services</a></li>
                     <li><a href="/portfolio/">Portfolio</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
@@ -676,6 +899,32 @@
 
 
             <div class="portfolio-grid">
+
+                <!-- Current Project - Brick 'n Board Development -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="/portfolio/brick n board.jpeg"
+                            alt="Brick n Board Development Western Cape - Professional painting contractor">
+                        <div class="portfolio-badge">Ongoing</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Brick 'n Board Development</h3>
+                        <div class="portfolio-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Western Cape</span>
+                        </div>
+                        <p>Kingmaths Construction appointed as painting sub-contractor for Brick 'n Board's latest
+                            residential and commercial development, delivering premium finishing services.</p>
+
+                        <h4>Services Provided:</h4>
+                        <ul class="portfolio-services">
+                            <li>Interior and exterior surface preparation and priming</li>
+                            <li>Multi-layer coating systems for durability</li>
+                            <li>Ceiling and trim painting to specifications</li>
+                            <li>Quality control and site coordination</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Project 4 -->
                 <div class="portfolio-card">
@@ -875,6 +1124,17 @@
         <div class="portfolio-cta-content">
             <h2>Ready to Start Your Project?</h2>
             <p>Let's discuss how we can bring royal-grade craftsmanship to your next development</p>
+
+            <div
+                style="background: rgba(212, 175, 55, 0.2); border: 2px solid var(--gold); border-radius: 10px; padding: 25px; margin: 30px auto; max-width: 600px;">
+                <h3 style="font-size: 1.6rem; color: var(--gold); margin-bottom: 10px;"><i class="fas fa-crown"></i>
+                    BLACK FRIDAY SPECIAL!</h3>
+                <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">FREE INSPECTION - CALL US NOW!</p>
+                <p style="font-size: 0.95rem; margin-bottom: 8px;">Offer valid until 30 November 2025</p>
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold);">🎉 BONUS: 10% OFF QUOTE when you
+                    call us before Sunday!</p>
+            </div>
+
             <div style="margin-top: 30px;">
                 <button class="cta-button header-cta" onclick="window.location.href='tel:+27659823727'"><i
                         class="fas fa-phone"></i> Talk To Us</button>
