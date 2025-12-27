@@ -23,8 +23,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Commercial Portfolio | Kingmaths Construction">
-    <meta name="twitter:description"
-        content="Professional commercial construction services in Cape Town.">
+    <meta name="twitter:description" content="Professional commercial construction services in Cape Town.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -61,7 +60,11 @@
             --crimson: #b22222;
             --snow: #f8f9fa;
             --charcoal: #333;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-elegant: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-luxury: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
 
         * {
@@ -73,6 +76,12 @@
         html {
             overflow-x: hidden;
             width: 100%;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: auto;
         }
 
         body {
@@ -103,6 +112,14 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
             border-top: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, rgba(10, 46, 90, 0.98) 0%, rgba(4, 30, 66, 0.98) 100%);
         }
 
         .header-container {
@@ -122,6 +139,13 @@
         .logo img {
             height: 70px;
             width: auto;
+            transition: var(--transition-elegant);
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+        }
+
+        .logo:hover img {
+            transform: scale(1.05) rotate(-2deg);
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.4));
         }
 
         .logo-text {
@@ -148,31 +172,54 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: var(--transition);
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            display: inline-block;
         }
 
         nav a:hover {
             color: var(--gold);
+            transform: translateY(-2px);
         }
 
         nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: var(--gold);
-            transition: var(--transition);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
         }
 
         nav a:hover::after {
             width: 100%;
         }
 
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 120%;
+            height: 200%;
+        }
+
         .cta-button {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, #e6c447 100%);
             color: var(--royal-blue);
             border: none;
             padding: 12px 25px;
@@ -180,18 +227,53 @@
             text-transform: uppercase;
             border-radius: 30px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.9rem;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             white-space: nowrap;
-            overflow: visible;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .cta-button:hover {
-            background: #e6c447;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #e6c447 0%, #f0d96f 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+            letter-spacing: 1.5px;
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .cta-button i {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: inline-block;
+        }
+
+        .cta-button:hover i {
+            transform: scale(1.2) rotate(10deg);
         }
 
         /* Mobile Menu */
@@ -329,15 +411,44 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
             position: relative;
             width: 100%;
             max-width: 450px;
+            opacity: 0;
+            transform: translateY(60px) scale(0.92);
+            will-change: transform, opacity, box-shadow;
+        }
+
+        .portfolio-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(10, 46, 90, 0.05));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
         }
 
         .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.3);
         }
 
         .portfolio-image {
@@ -350,11 +461,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .portfolio-card:hover .portfolio-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: brightness(1.1);
         }
 
         .portfolio-badge {
@@ -369,6 +481,13 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .portfolio-card:hover .portfolio-badge {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
         .portfolio-content {
@@ -399,6 +518,12 @@
             padding-left: 25px;
             position: relative;
             list-style: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-services li:hover {
+            padding-left: 30px;
+            color: var(--royal-blue);
         }
 
         .portfolio-services li::before {
@@ -408,6 +533,12 @@
             position: absolute;
             left: 0;
             color: var(--gold);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .portfolio-services li:hover::before {
+            transform: scale(1.3) rotate(360deg);
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6));
         }
 
         .portfolio-link {
@@ -416,16 +547,23 @@
             font-weight: 600;
             text-decoration: none;
             margin-top: 15px;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .portfolio-link:hover {
             color: var(--gold);
-            text-decoration: underline;
+            transform: translateX(5px);
         }
 
         .portfolio-link i {
             margin-left: 5px;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: inline-block;
+        }
+
+        .portfolio-link:hover i {
+            transform: translateX(5px);
         }
 
         /* Testimonials */
@@ -592,12 +730,33 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-links a:hover::before {
+            width: 100%;
+            height: 100%;
         }
 
         .social-links a:hover {
-            background: var(--gold);
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.15) rotate(360deg);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
 
         .copyright {
@@ -1019,7 +1178,8 @@
                 <!-- Project 1 -->
                 <div class="portfolio-card">
                     <div class="portfolio-image">
-                        <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp" alt="Le Coste Estate">
+                        <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp"
+                            alt="Le Coste Estate">
                         <div class="portfolio-badge">Completed</div>
                     </div>
                     <div class="portfolio-content">
@@ -1028,7 +1188,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Cape Town</span>
                         </div>
-                        <p>The Kingmaths team provided comprehensive interior preparation for this high-end lifestyle estate featuring French-inspired design and premium finishes.</p>
+                        <p>The Kingmaths team provided comprehensive interior preparation for this high-end lifestyle
+                            estate featuring French-inspired design and premium finishes.</p>
 
                         <h4>Services Provided:</h4>
                         <ul class="portfolio-services">
@@ -1037,7 +1198,7 @@
                             <li>Interior painting for homes and common areas</li>
                             <li>Color consistency throughout the estate</li>
                         </ul>
-                        
+
                         <a href="https://lecosteestate.co.za/" class="portfolio-link" target="_blank">
                             View Project Details <i class="fas fa-arrow-right"></i>
                         </a>
@@ -1047,7 +1208,8 @@
                 <!-- Project 2 -->
                 <div class="portfolio-card">
                     <div class="portfolio-image">
-                        <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg" alt="Haasendal Lifestyle Estate">
+                        <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg"
+                            alt="Haasendal Lifestyle Estate">
                         <div class="portfolio-badge">Completed</div>
                     </div>
                     <div class="portfolio-content">
@@ -1056,8 +1218,9 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Brackenfell</span>
                         </div>
-                        <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand development featuring homes, gardens and clubhouse spaces.</p>
-                        
+                        <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand development
+                            featuring homes, gardens and clubhouse spaces.</p>
+
                         <h4>Services Provided:</h4>
                         <ul class="portfolio-services">
                             <li>Interior and exterior painting renovations</li>
@@ -1065,7 +1228,7 @@
                             <li>Color consistency management</li>
                             <li>High-quality finishing throughout the estate</li>
                         </ul>
-                        
+
                         <a href="https://www.haasendalestate.co.za/" class="portfolio-link" target="_blank">
                             View Project Details <i class="fas fa-arrow-right"></i>
                         </a>
@@ -1214,7 +1377,8 @@
     <section class="portfolio-cta">
         <div class="portfolio-cta-content">
             <h2>Ready to Start Your Project?</h2>
-            <p>Let's discuss how we can bring professional craftsmanship to your next development</p>
+            <p>Whether residential or commercial, let's discuss how we can bring exceptional craftsmanship to your next
+                development</p>
 
             <div style="margin-top: 30px;">
                 <button class="cta-button header-cta" onclick="window.location.href='tel:+27659823727'"><i
@@ -1295,6 +1459,7 @@
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
+        const header = document.querySelector('header');
 
         mobileMenu.addEventListener('click', function () {
             this.classList.toggle('active');
@@ -1309,15 +1474,93 @@
             });
         });
 
-        // Simple animation for portfolio cards
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Enhanced animation for portfolio cards
         document.addEventListener('DOMContentLoaded', function () {
             const portfolioCards = document.querySelectorAll('.portfolio-card');
 
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 50);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
             portfolioCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 200 * index);
+                // Add staggered delay for smoother cascade
+                card.style.transitionDelay = `${index * 0.2}s`;
+                observer.observe(card);
+            });
+
+            // Custom smooth scroll function
+            window.smoothScrollTo = function (target, duration) {
+                const start = window.pageYOffset;
+                const distance = target - start;
+                const startTime = performance.now();
+
+                function easeInOutCubic(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                function scroll(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = easeInOutCubic(progress);
+
+                    window.scrollTo(0, start + distance * easeProgress);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(scroll);
+                    }
+                }
+
+                requestAnimationFrame(scroll);
+            };
+
+            // Add ripple effect to buttons
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Parallax effect for hero background
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.portfolio-hero');
+                if (hero && scrolled < hero.offsetHeight) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
             });
 
             // Add active class to current page link
@@ -1330,6 +1573,27 @@
                 }
             });
         });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 

@@ -23,8 +23,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Construction Gallery | Kingmaths Cape Town">
-    <meta name="twitter:description"
-        content="View completed projects: painting, waterproofing, renovations & more.">
+    <meta name="twitter:description" content="View completed projects: painting, waterproofing, renovations & more.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -61,7 +60,11 @@
             --crimson: #b22222;
             --snow: #f8f9fa;
             --charcoal: #333;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-elegant: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-luxury: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
 
         * {
@@ -73,6 +76,12 @@
         html {
             overflow-x: hidden;
             width: 100%;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: auto;
         }
 
         body {
@@ -103,6 +112,14 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
             border-top: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, rgba(10, 46, 90, 0.98) 0%, rgba(4, 30, 66, 0.98) 100%);
         }
 
         .header-container {
@@ -122,6 +139,13 @@
         .logo img {
             height: 70px;
             width: auto;
+            transition: var(--transition-elegant);
+            filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+        }
+
+        .logo:hover img {
+            transform: scale(1.05) rotate(-2deg);
+            filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.4));
         }
 
         .logo-text {
@@ -148,31 +172,54 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: var(--transition);
+            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            display: inline-block;
         }
 
         nav a:hover {
             color: var(--gold);
+            transform: translateY(-2px);
         }
 
         nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: var(--gold);
-            transition: var(--transition);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
         }
 
         nav a:hover::after {
             width: 100%;
         }
 
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        nav a:hover::before {
+            width: 120%;
+            height: 200%;
+        }
+
         .cta-button {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, #e6c447 100%);
             color: var(--royal-blue);
             border: none;
             padding: 12px 25px;
@@ -180,18 +227,53 @@
             text-transform: uppercase;
             border-radius: 30px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.9rem;
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             white-space: nowrap;
-            overflow: visible;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .cta-button:hover {
-            background: #e6c447;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #e6c447 0%, #f0d96f 100%);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+            letter-spacing: 1.5px;
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .cta-button i {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: inline-block;
+        }
+
+        .cta-button:hover i {
+            transform: scale(1.2) rotate(10deg);
         }
 
         /* Mobile Menu */
@@ -293,14 +375,37 @@
             padding: 8px 20px;
             border-radius: 30px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--royal-blue);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            width: 300px;
+            height: 300px;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--royal-blue);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(10, 46, 90, 0.3);
         }
 
         .search-box {
@@ -352,15 +457,35 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 10;
             box-shadow: 0 4px 15px rgba(10, 46, 90, 0.3);
+            overflow: hidden;
+        }
+
+        .gallery-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .gallery-nav-btn:hover::before {
+            width: 100%;
+            height: 100%;
         }
 
         .gallery-nav-btn:hover {
-            background: var(--gold);
             color: var(--royal-blue);
-            transform: translateY(-50%) scale(1.1);
+            transform: translateY(-50%) scale(1.15) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
 
         .gallery-nav-btn.prev {
@@ -381,10 +506,18 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             scroll-snap-type: x mandatory;
+            scroll-padding: 20px;
         }
 
         .masonry-grid::-webkit-scrollbar {
             display: none;
+        }
+
+        /* Smooth momentum scrolling */
+        @media (hover: none) {
+            .masonry-grid {
+                scroll-snap-type: x proximity;
+            }
         }
 
         /* Padding helpers for centering */
@@ -403,21 +536,43 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1);
             cursor: pointer;
             scroll-snap-align: center;
             opacity: 0.6;
             transform: scale(0.9);
+            will-change: transform, opacity, box-shadow;
         }
 
         .gallery-item.center {
             opacity: 1;
             transform: scale(1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(212, 175, 55, 0.3);
         }
 
         .gallery-item:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 46, 90, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
         }
 
         .gallery-item img {
@@ -425,11 +580,12 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: var(--transition);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: brightness(1.05);
         }
 
         .gallery-info {
@@ -437,15 +593,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(10, 46, 90, 0.9), transparent);
+            background: linear-gradient(to top, rgba(10, 46, 90, 0.95), rgba(10, 46, 90, 0.7), transparent);
             padding: 20px;
             color: white;
             opacity: 0;
-            transition: var(--transition);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1),
+                opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1),
+                transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+            z-index: 2;
         }
 
         .gallery-item:hover .gallery-info {
             opacity: 1;
+            transform: translateY(0);
         }
 
         .gallery-info h3 {
@@ -462,6 +623,13 @@
             font-size: 0.8rem;
             font-weight: 600;
             margin-top: 5px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item:hover .category {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
         }
 
         /* Lightbox */
@@ -1004,7 +1172,7 @@
                         <img src="/images/leak.png" alt="Leaking Toilet Ceiling">
                         <div class="gallery-info">
                             <h3>Leaking Toilet Ceiling</h3>
-                            <p>Premium waterproofing solutions for your home</p>
+                            <p>Premium waterproofing solutions for any property</p>
                             <span class="category">Waterproofing</span>
                         </div>
                     </div>
@@ -1099,7 +1267,7 @@
                         <img src="/images/tiling 2.png" alt="Tiling">
                         <div class="gallery-info">
                             <h3>Shower Tiling</h3>
-                            <p>Expert tiling solutions for your home</p>
+                            <p>Expert tiling solutions for any property</p>
                             <span class="category">Tiling</span>
                         </div>
                     </div>
@@ -1108,7 +1276,7 @@
                         <img src="/images/roof.png" alt="Roof Repair">
                         <div class="gallery-info">
                             <h3>Roof Repair and Maintenance</h3>
-                            <p>Expert roofing solutions for your home</p>
+                            <p>Expert roofing solutions for any property</p>
                             <span class="category">Roofing</span>
                         </div>
                     </div>
@@ -1703,7 +1871,7 @@
     <section class="gallery-cta">
         <div class="gallery-cta-content">
             <h2>Love What You See?</h2>
-            <p>Get the same professional craftsmanship for your home</p>
+            <p>Bring the same professional craftsmanship to your residential or commercial property</p>
 
             <button class="cta-button" onclick="window.location.href='tel:+27659823727'" style="margin-top: 20px;">
                 <i class="fas fa-phone"></i> Get a Quote
@@ -1783,6 +1951,7 @@
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
+        const header = document.querySelector('header');
 
         mobileMenu.addEventListener('click', function () {
             this.classList.toggle('active');
@@ -1795,6 +1964,17 @@
                 mobileMenu.classList.remove('active');
                 navMenu.classList.remove('active');
             });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // Gallery functionality
@@ -1814,7 +1994,7 @@
             let currentImageIndex = 0;
             const images = Array.from(galleryItems);
 
-            // Function to update centered item
+            // Function to update centered item with smooth transitions
             function updateCenteredItem() {
                 const containerRect = galleryContainer.getBoundingClientRect();
                 const containerCenter = containerRect.left + containerRect.width / 2;
@@ -1838,25 +2018,28 @@
                 // Remove center class from all items
                 galleryItems.forEach(item => item.classList.remove('center'));
 
-                // Add center class to closest item
+                // Add center class to closest item with animation
                 if (closestItem) {
                     closestItem.classList.add('center');
                 }
             }
 
-            // Update centered item on scroll
-            galleryContainer.addEventListener('scroll', updateCenteredItem);
+            // Update centered item on scroll with debouncing
+            let scrollTimeout;
+            galleryContainer.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateCenteredItem, 50);
+            });
 
             // Initialize centered item
             setTimeout(updateCenteredItem, 100);
 
-            // Gallery scroll navigation
+            // Gallery scroll navigation with smooth animations
             galleryPrevBtn.addEventListener('click', function () {
                 const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
                 const containerRect = galleryContainer.getBoundingClientRect();
                 const containerCenter = containerRect.left + containerRect.width / 2;
 
-                // Find current centered item
                 let currentIndex = -1;
                 visibleItems.forEach((item, index) => {
                     const itemRect = item.getBoundingClientRect();
@@ -1866,7 +2049,6 @@
                     }
                 });
 
-                // Scroll to previous item
                 const prevIndex = currentIndex > 0 ? currentIndex - 1 : 0;
                 if (visibleItems[prevIndex]) {
                     visibleItems[prevIndex].scrollIntoView({
@@ -1882,7 +2064,6 @@
                 const containerRect = galleryContainer.getBoundingClientRect();
                 const containerCenter = containerRect.left + containerRect.width / 2;
 
-                // Find current centered item
                 let currentIndex = -1;
                 visibleItems.forEach((item, index) => {
                     const itemRect = item.getBoundingClientRect();
@@ -1892,7 +2073,6 @@
                     }
                 });
 
-                // Scroll to next item
                 const nextIndex = currentIndex < visibleItems.length - 1 ? currentIndex + 1 : visibleItems.length - 1;
                 if (visibleItems[nextIndex]) {
                     visibleItems[nextIndex].scrollIntoView({
@@ -1903,13 +2083,10 @@
                 }
             });
 
-            // Filter functionality
+            // Filter functionality with smooth transitions
             filterButtons.forEach(button => {
                 button.addEventListener('click', function () {
-                    // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-
-                    // Add active class to clicked button
                     this.classList.add('active');
 
                     const filter = this.getAttribute('data-filter');
@@ -1922,7 +2099,6 @@
                         }
                     });
 
-                    // Find first visible item and scroll to center it
                     setTimeout(() => {
                         const firstVisible = Array.from(galleryItems).find(item => item.style.display !== 'none');
                         if (firstVisible) {
@@ -1952,7 +2128,6 @@
                     }
                 });
 
-                // Find first visible item and scroll to center it
                 setTimeout(() => {
                     const firstVisible = Array.from(galleryItems).find(item => item.style.display !== 'none');
                     if (firstVisible) {
@@ -1976,12 +2151,10 @@
                 });
             });
 
-            // Close lightbox
             lightboxClose.addEventListener('click', function () {
                 lightbox.classList.remove('active');
             });
 
-            // Navigation in lightbox
             lightboxPrev.addEventListener('click', function () {
                 currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
                 const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
@@ -1994,7 +2167,6 @@
                 lightboxImg.setAttribute('src', imgSrc);
             });
 
-            // Close lightbox when clicking outside
             lightbox.addEventListener('click', function (e) {
                 if (e.target === lightbox) {
                     lightbox.classList.remove('active');
@@ -2013,7 +2185,57 @@
                     }
                 }
             });
+
+            // Add ripple effect to buttons
+            document.querySelectorAll('.cta-button, .filter-btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Parallax effect for hero background
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.gallery-hero');
+                if (hero && scrolled < hero.offsetHeight) {
+                    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+                }
+            });
         });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 
