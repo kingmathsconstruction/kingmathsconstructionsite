@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Portfolio | Kingmaths Construction Cape Town | Business & Industrial Projects | Black Friday
-    </title>
+    <title>Commercial Portfolio | Kingmaths Construction Cape Town | Business & Industrial Projects</title>
     <link rel="canonical" href="https://kingmaths.com/portfolio/">
     <meta name="description"
-        content="Commercial construction portfolio in Cape Town. View our business, industrial & commercial painting, waterproofing & renovation projects. Black Friday: 30% OFF commercial services! ☎️ 065 982 3727">
+        content="Commercial construction portfolio in Cape Town. View our business, industrial & commercial painting, waterproofing & renovation projects. ☎️ 065 982 3727">
     <meta name="keywords"
-        content="commercial construction Cape Town, business painting Cape Town, industrial waterproofing, commercial renovations Cape Town, office painting, warehouse construction, retail renovations Cape Town, commercial contractors Western Cape, Black Friday commercial deals">
+        content="commercial construction Cape Town, business painting Cape Town, industrial waterproofing, commercial renovations Cape Town, office painting, warehouse construction, retail renovations Cape Town, commercial contractors Western Cape">
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph / Facebook -->
@@ -18,14 +17,14 @@
     <meta property="og:url" content="https://kingmaths.com/portfolio/">
     <meta property="og:title" content="Commercial Construction Portfolio | Kingmaths Cape Town">
     <meta property="og:description"
-        content="Expert commercial construction services. View our business & industrial projects. Black Friday: 30% OFF!">
+        content="Expert commercial construction services. View our business & industrial projects.">
     <meta property="og:image" content="https://kingmaths.com/images/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Commercial Portfolio | Kingmaths Construction">
     <meta name="twitter:description"
-        content="Professional commercial construction services in Cape Town. Black Friday Special: 30% OFF!">
+        content="Professional commercial construction services in Cape Town.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -98,143 +97,12 @@
             padding: 15px 0;
             position: fixed;
             width: 100%;
-            top: 42px;
+            top: 0;
             margin: 0;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border-bottom: 3px solid var(--gold);
             border-top: 0;
-        }
-
-        /* Black Friday Marquee Banner */
-        .promo-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(90deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-            color: white;
-            padding: 0;
-            margin: 0;
-            z-index: 1001;
-            overflow: hidden;
-            border: 0;
-            box-shadow: none;
-            line-height: 1;
-            display: block;
-            height: 42px;
-        }
-
-        .promo-content {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 15px;
-            animation: slideIn 0.5s ease-out;
-            padding: 10px 20px;
-            white-space: nowrap;
-            margin: 0;
-            line-height: 1.2;
-            height: 100%;
-        }
-
-        .promo-scroll-wrapper {
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-            margin: 0 15px;
-        }
-
-        .promo-scroll-text {
-            display: inline-block;
-            animation: scrollText 15s linear infinite;
-            padding-left: 100%;
-        }
-
-        .promo-text {
-            font-weight: 800;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            flex-shrink: 0;
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .promo-highlight {
-            color: var(--gold);
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .promo-cta-btn {
-            background: var(--gold);
-            color: var(--royal-blue);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-
-        .promo-cta-btn:hover {
-            background: #e6c447;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-        }
-
-        @keyframes scrollText {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
-            }
-
-            to {
-                text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 30px var(--gold);
-            }
         }
 
         .header-container {
@@ -451,6 +319,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
         }
 
         .portfolio-card {
@@ -460,6 +331,8 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
             position: relative;
+            width: 100%;
+            max-width: 450px;
         }
 
         .portfolio-card:hover {
@@ -1065,23 +938,6 @@
 </head>
 
 <body>
-    <!-- Black Friday Promo Banner -->
-    <div class="promo-banner">
-        <div class="promo-content">
-            <span class="promo-text">BLACK FRIDAY!</span>
-            <div class="promo-scroll-wrapper">
-                <span class="promo-scroll-text promo-highlight">
-                    FREE INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! • FREE
-                    INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! •
-                    FREE INSPECTION + 10% OFF discounted on total price of services on quote Before Sunday! •
-                </span>
-            </div>
-            <button class="promo-cta-btn" onclick="window.location.href='tel:+27659823727'">
-                <i class="fas fa-phone"></i> CALL NOW
-            </button>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1107,7 +963,7 @@
                 </ul>
             </nav>
             <button class="cta-button header-cta" onclick="window.location.href='https://wa.me/27659823727'"><i
-                    class="fas fa-phone"></i> Claim Free Inspection</button>
+                    class="fas fa-phone"></i> Contact Us</button>
         </div>
         <style>
             @media (max-width: 768px) {
@@ -1160,29 +1016,89 @@
 
             <div class="portfolio-grid">
 
-                <!-- Current Project - Brick 'n Board Development -->
+                <!-- Project 1 -->
                 <div class="portfolio-card">
                     <div class="portfolio-image">
-                        <img src="/portfolio/brick n board.jpeg"
-                            alt="Brick n Board Development Western Cape - Professional painting contractor">
-                        <div class="portfolio-badge">Ongoing</div>
+                        <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp" alt="Le Coste Estate">
+                        <div class="portfolio-badge">Completed</div>
                     </div>
                     <div class="portfolio-content">
-                        <h3>Brick 'n Board Development</h3>
+                        <h3>Le Coste Estate</h3>
                         <div class="portfolio-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Western Cape</span>
+                            <span>Cape Town</span>
                         </div>
-                        <p>Kingmaths Construction appointed as painting sub-contractor for Brick 'n Board's latest
-                            residential and commercial development, delivering premium finishing services.</p>
+                        <p>The Kingmaths team provided comprehensive interior preparation for this high-end lifestyle estate featuring French-inspired design and premium finishes.</p>
 
                         <h4>Services Provided:</h4>
                         <ul class="portfolio-services">
-                            <li>Interior and exterior surface preparation and priming</li>
-                            <li>Multi-layer coating systems for durability</li>
-                            <li>Ceiling and trim painting to specifications</li>
-                            <li>Quality control and site coordination</li>
+                            <li>Complete wall preparation (skimming, sanding, priming)</li>
+                            <li>Top-grade wall and trim coatings</li>
+                            <li>Interior painting for homes and common areas</li>
+                            <li>Color consistency throughout the estate</li>
                         </ul>
+                        
+                        <a href="https://lecosteestate.co.za/" class="portfolio-link" target="_blank">
+                            View Project Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg" alt="Haasendal Lifestyle Estate">
+                        <div class="portfolio-badge">Completed</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Haasendal Estate</h3>
+                        <div class="portfolio-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Brackenfell</span>
+                        </div>
+                        <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand development featuring homes, gardens and clubhouse spaces.</p>
+                        
+                        <h4>Services Provided:</h4>
+                        <ul class="portfolio-services">
+                            <li>Interior and exterior painting renovations</li>
+                            <li>Silverstone and Greystone precinct refresh</li>
+                            <li>Color consistency management</li>
+                            <li>High-quality finishing throughout the estate</li>
+                        </ul>
+                        
+                        <a href="https://www.haasendalestate.co.za/" class="portfolio-link" target="_blank">
+                            View Project Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
+                            alt="De Kuile Lifestyle Estate">
+                        <div class="portfolio-badge">Completed</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>De Kuile Lifestyle Estate</h3>
+                        <div class="portfolio-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kuils River</span>
+                        </div>
+                        <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior & exterior
+                            finishing and painting.</p>
+
+                        <h4>Services Provided:</h4>
+                        <ul class="portfolio-services">
+                            <li>Full interior finishing for modern apartments</li>
+                            <li>Skimming, priming and painting of apartments, corridors and lobbies</li>
+                            <li>Living space painting to high standards</li>
+                            <li>Contribution to estate's sleek, contemporary look</li>
+                        </ul>
+
+                        <a href="https://balwin.co.za/developments/de-kuile" class="portfolio-link" target="_blank">
+                            View Project Details <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1211,91 +1127,6 @@
 
                         <a href="https://www.linkedin.com/posts/wbho-construction_wbho-capetown-bridgewater-activity-6834076545917693952-GwQR"
                             class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Project 1 -->
-                <!-- <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp" alt="Le Coste Estate">
-                        <div class="portfolio-badge">Ongoing</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Le Coste Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Cape Town</span>
-                        </div>
-                        <p>Some of the Kingmaths team has provided interior preparation for this new ongoing high-end lifestyle estate featuring French-inspired design.</p>
-
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Complete wall preparation (skimming, sanding, priming)</li>
-                            <li>Top-grade wall and trim coatings</li>
-                            <li>Interior painting for homes and common areas</li>
-                            <li>Color consistency throughout the estate</li>
-                        </ul>
-                        
-                        <a href="https://lecosteestate.co.za/" class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div> -->
-
-                <!-- Project 2 -->
-                <!-- <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg" alt="Haasendal Lifestyle Estate">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Haasendal Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Brackenfell</span>
-                        </div>
-                        <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand development featuring homes, gardens and clubhouse spaces.</p>
-                        
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Interior and exterior painting renovations</li>
-                            <li>Silverstone and Greystone precinct refresh</li>
-                            <li>Color consistency management</li>
-                            <li>High-quality finishing throughout the estate</li>
-                        </ul>
-                        
-                        <a href="https://www.haasendalestate.co.za/" class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div> -->
-
-                <!-- Project 3 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
-                            alt="De Kuile Lifestyle Estate">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>De Kuile Lifestyle Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kuils River</span>
-                        </div>
-                        <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior & exterior
-                            finishing and painting.</p>
-
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Full interior finishing for modern apartments</li>
-                            <li>Skimming, priming and painting of apartments, corridors and lobbies</li>
-                            <li>Living space painting to high standards</li>
-                            <li>Contribution to estate's sleek, contemporary look</li>
-                        </ul>
-
-                        <a href="https://balwin.co.za/developments/de-kuile" class="portfolio-link" target="_blank">
                             View Project Details <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -1383,22 +1214,11 @@
     <section class="portfolio-cta">
         <div class="portfolio-cta-content">
             <h2>Ready to Start Your Project?</h2>
-            <p>Let's discuss how we can bring royal-grade craftsmanship to your next development</p>
-
-            <div
-                style="background: rgba(212, 175, 55, 0.2); border: 2px solid var(--gold); border-radius: 10px; padding: 25px; margin: 30px auto; max-width: 600px;">
-                <h3 style="font-size: 1.6rem; color: var(--gold); margin-bottom: 10px;"><i class="fas fa-crown"></i>
-                    BLACK FRIDAY SPECIAL!</h3>
-                <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;">FREE INSPECTION - CALL US NOW!</p>
-                <p style="font-size: 0.95rem; margin-bottom: 8px;">Offer valid until 30 November 2025</p>
-                <p style="font-size: 1.1rem; font-weight: 600; color: var(--gold);">🎉 BONUS: 10% OFF discounted on
-                    total price of services on quote when you
-                    call us before Sunday!</p>
-            </div>
+            <p>Let's discuss how we can bring professional craftsmanship to your next development</p>
 
             <div style="margin-top: 30px;">
                 <button class="cta-button header-cta" onclick="window.location.href='tel:+27659823727'"><i
-                        class="fas fa-phone"></i> Claim Free Inspection</button>
+                        class="fas fa-phone"></i> Get a Quote</button>
             </div>
         </div>
     </section>
@@ -1413,9 +1233,6 @@
                         all season property protection services in the Western Cape. Servicing all areas of Cape Town
                         including Tyger Waterfront, Welgemoed, Bellville, Durbanville, Canal Walk, Brackenfell and
                         surrounding suburbs</p>
-                    <div class="social-links">
-                        <a href="https://wa.me/27659823727"><i class="fab fa-whatsapp"></i></a>
-                    </div>
                 </div>
 
                 <div class="footer-col">
