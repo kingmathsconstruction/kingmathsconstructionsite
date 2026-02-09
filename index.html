@@ -2570,7 +2570,7 @@
 
             // Navigation buttons
             if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
+                prevBtn.addEventListener('click', (e) => {
                     const currentCenter = document.querySelector('.project-card.center');
                     if (currentCenter && currentCenter.previousElementSibling) {
                         currentCenter.previousElementSibling.scrollIntoView({
@@ -2586,11 +2586,13 @@
                             inline: 'center'
                         });
                     }
+                    // Remove focus to clear hover state on mobile
+                    e.currentTarget.blur();
                 });
             }
 
             if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
+                nextBtn.addEventListener('click', (e) => {
                     const currentCenter = document.querySelector('.project-card.center');
                     if (currentCenter && currentCenter.nextElementSibling) {
                         currentCenter.nextElementSibling.scrollIntoView({
@@ -2606,6 +2608,8 @@
                             inline: 'center'
                         });
                     }
+                    // Remove focus to clear hover state on mobile
+                    e.currentTarget.blur();
                 });
             }
 

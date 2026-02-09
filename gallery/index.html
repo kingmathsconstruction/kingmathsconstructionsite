@@ -2096,7 +2096,7 @@
             setTimeout(updateCenteredItem, 100);
 
             // Gallery scroll navigation with smooth animations
-            galleryPrevBtn.addEventListener('click', function () {
+            galleryPrevBtn.addEventListener('click', function (e) {
                 const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
                 const containerRect = galleryContainer.getBoundingClientRect();
                 const containerCenter = containerRect.left + containerRect.width / 2;
@@ -2118,9 +2118,11 @@
                         inline: 'center'
                     });
                 }
+                // Remove focus to clear hover state on mobile
+                e.currentTarget.blur();
             });
 
-            galleryNextBtn.addEventListener('click', function () {
+            galleryNextBtn.addEventListener('click', function (e) {
                 const visibleItems = Array.from(galleryItems).filter(item => item.style.display !== 'none');
                 const containerRect = galleryContainer.getBoundingClientRect();
                 const containerCenter = containerRect.left + containerRect.width / 2;
@@ -2142,6 +2144,8 @@
                         inline: 'center'
                     });
                 }
+                // Remove focus to clear hover state on mobile
+                e.currentTarget.blur();
             });
 
             // Filter functionality with smooth transitions
@@ -2216,16 +2220,20 @@
                 lightbox.classList.remove('active');
             });
 
-            lightboxPrev.addEventListener('click', function () {
+            lightboxPrev.addEventListener('click', function (e) {
                 currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
                 const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
                 lightboxImg.setAttribute('src', imgSrc);
+                // Remove focus to clear hover state on mobile
+                e.currentTarget.blur();
             });
 
-            lightboxNext.addEventListener('click', function () {
+            lightboxNext.addEventListener('click', function (e) {
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 const imgSrc = images[currentImageIndex].querySelector('img').getAttribute('src');
                 lightboxImg.setAttribute('src', imgSrc);
+                // Remove focus to clear hover state on mobile
+                e.currentTarget.blur();
             });
 
             lightbox.addEventListener('click', function (e) {
