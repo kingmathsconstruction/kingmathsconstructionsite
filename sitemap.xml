@@ -54,9 +54,9 @@
     </image:image>
   </url>
   
-  <!-- Portfolio Page -->
+  <!-- Projects Page -->
   <url>
-    <loc>https://kingmaths.com/portfolio/</loc>
+    <loc>https://kingmaths.com/projects/</loc>
     <lastmod>2025-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

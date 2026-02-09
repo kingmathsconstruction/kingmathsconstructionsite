@@ -27,7 +27,7 @@ Your Kingmaths Construction website has been fully optimized for search engines 
    - Schema markup for image gallery
    - Location keywords
 
-3. **portfolio/index.html** - Commercial portfolio
+3. **projects/index.html** - Commercial projects
    - SEO-optimized title and meta tags
    - Open Graph tags
    - Schema markup

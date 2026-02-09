@@ -498,11 +498,11 @@
 
         .masonry-grid {
             display: flex;
-            gap: 20px;
+            gap: 40px;
             overflow-x: auto;
             overflow-y: hidden;
             scroll-behavior: smooth;
-            padding: 20px 10px;
+            padding: 40px 10px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             scroll-snap-type: x mandatory;
@@ -539,22 +539,29 @@
             transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1),
                 opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1),
                 transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
-                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                filter 1s cubic-bezier(0.215, 0.61, 0.355, 1);
             cursor: pointer;
             scroll-snap-align: center;
-            opacity: 0.6;
-            transform: scale(0.9);
-            will-change: transform, opacity, box-shadow;
+            opacity: 0.4;
+            transform: scale(0.75);
+            filter: blur(3px) brightness(0.8);
+            will-change: transform, opacity, box-shadow, filter;
         }
 
         .gallery-item.center {
             opacity: 1;
             transform: scale(1);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(212, 175, 55, 0.3);
+            filter: blur(0) brightness(1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(212, 175, 55, 0.4);
         }
 
         .gallery-item:hover {
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-item.center:hover {
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(212, 175, 55, 0.5);
         }
 
         .gallery-item::before {
@@ -797,6 +804,22 @@
             opacity: 0.7;
         }
 
+        .footer-membership {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-membership a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-membership a:hover {
+            color: var(--light-gold) !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
         /* CTA Section */
         .gallery-cta {
             padding: 80px 0;
@@ -836,6 +859,10 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .masonry-grid {
+                gap: 30px;
+            }
+
             .gallery-item {
                 width: 350px;
                 height: 450px;
@@ -941,6 +968,14 @@
             .gallery-item {
                 width: 300px;
                 height: 400px;
+                opacity: 0.6;
+                transform: scale(0.9);
+                filter: blur(0.5px) brightness(0.95);
+            }
+
+            .gallery-item.center {
+                transform: scale(1);
+                filter: blur(0) brightness(1);
             }
 
             .masonry-grid::before,
@@ -1114,7 +1149,7 @@
                 <ul id="nav-menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/#services">Services</a></li>
-                    <li><a href="/portfolio/">Portfolio</a></li>
+                    <li><a href="/projects/">Projects</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
                     <li><a href="/#why-us">Why Us</a></li>
                     <li><a href="/#contact">Contact</a></li>
@@ -1240,6 +1275,24 @@
                         <div class="gallery-info">
                             <h3>Bridgewater One</h3>
                             <p>Exterior Painting</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/PHOTO-2025-12-29-18-27-42.jpg" alt="Professional Painting">
+                        <div class="gallery-info">
+                            <h3>Professional Interior Painting</h3>
+                            <p>High-quality interior painting with smooth finish</p>
+                            <span class="category">Painting</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="painting">
+                        <img src="/images/PHOTO-2025-12-29-18-27-43.jpg" alt="Expert Paint Work">
+                        <div class="gallery-info">
+                            <h3>Expert Paint Application</h3>
+                            <p>Professional painting showcasing precision and quality</p>
                             <span class="category">Painting</span>
                         </div>
                     </div>
@@ -1942,12 +1995,20 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
+                <p class="footer-membership">
+                    Kingmaths is a member of the <a href="/documents/BIBC Certificate.pdf" target="_blank"
+                        style="color: var(--gold); text-decoration: underline; font-weight: 600;">BIBC (Building
+                        Industry Bargaining Council)</a> under Oamari (Pty) Ltd
+                </p>
+                <p>&copy; <span id="currentYear"></span> Kingmaths Construction. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');

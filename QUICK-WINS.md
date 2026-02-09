@@ -119,7 +119,7 @@ Valid until Nov 30th 📅
 5. Get your Measurement ID (looks like: G-ABC123XYZ)
 6. Copy the code they give you
 7. Paste in the <head> section of index.html (right after <head> tag)
-8. Do the same for gallery/index.html and portfolio/index.html
+8. Do the same for gallery/index.html and projects/index.html
 
 **Code to add** (replace G-XXXXXXXXXX with your real ID):
 ```html

@@ -228,8 +228,8 @@
             {
               "@type": "ListItem",
               "position": 4,
-              "name": "Portfolio",
-              "item": "https://kingmaths.com/portfolio/"
+              "name": "Projects",
+              "item": "https://kingmaths.com/projects/"
             }
           ]
         }
@@ -1027,6 +1027,351 @@
             margin-bottom: 10px;
         }
 
+        /* Featured Projects Section */
+        .featured-projects {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .featured-projects .section-title h2 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--royal-blue);
+            margin-bottom: 20px;
+        }
+
+        .featured-projects .section-subtitle {
+            text-align: center;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .projects-wrapper {
+            position: relative;
+        }
+
+        .projects-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--royal-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(10, 46, 90, 0.3);
+            overflow: hidden;
+        }
+
+        .projects-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .projects-nav-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .projects-nav-btn:hover {
+            color: var(--royal-blue);
+            transform: translateY(-50%) scale(1.15) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .projects-nav-btn.prev {
+            left: 10px;
+        }
+
+        .projects-nav-btn.next {
+            right: 10px;
+        }
+
+        .projects-grid {
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            padding: 40px 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 20px;
+        }
+
+        .projects-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Smooth momentum scrolling */
+        @media (hover: none) {
+            .projects-grid {
+                scroll-snap-type: x proximity;
+            }
+        }
+
+        /* Padding helpers for centering */
+        .projects-grid::before,
+        .projects-grid::after {
+            content: '';
+            flex: 0 0 auto;
+            width: calc(50% - 200px);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                filter 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+            cursor: pointer;
+            position: relative;
+            flex: 0 0 auto;
+            width: 400px;
+            scroll-snap-align: center;
+            opacity: 0.4;
+            transform: scale(0.75);
+            filter: blur(3px) brightness(0.8);
+            will-change: transform, opacity, box-shadow, filter;
+        }
+
+        .project-card.center {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0) brightness(1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(212, 175, 55, 0.4);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.4);
+        }
+
+        .project-card.center:hover {
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(212, 175, 55, 0.5);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 46, 90, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.1);
+            filter: brightness(1.05);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--royal-blue);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .project-card-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card-content h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            color: var(--royal-blue);
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-card-content h3 {
+            color: var(--gold);
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-date,
+        .project-duration {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .project-date i,
+        .project-duration i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--royal-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .project-link:hover {
+            color: var(--gold);
+            gap: 12px;
+        }
+
+        .project-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-link i {
+            transform: translateX(5px);
+        }
+
+        /* Gallery CTA Section */
+        .gallery-cta-section {
+            background: linear-gradient(135deg, var(--royal-blue) 0%, #041e42 100%);
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+            opacity: 0.1;
+        }
+
+        .gallery-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-cta-content h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .gallery-cta-content p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .gallery-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-preview-item {
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .gallery-preview-item:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-preview-item:hover img {
+            transform: scale(1.2);
+        }
+
         /* Footer */
         footer {
             background: var(--royal-blue);
@@ -1125,6 +1470,22 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
             opacity: 0.7;
+        }
+
+        .footer-membership {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-membership a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-membership a:hover {
+            color: var(--light-gold) !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         /* Animations */
@@ -1228,6 +1589,27 @@
             .comparison-grid,
             .benefits-grid {
                 gap: 20px;
+            }
+
+            .project-card {
+                width: 350px;
+            }
+
+            .projects-grid {
+                gap: 30px;
+            }
+
+            .projects-grid::before,
+            .projects-grid::after {
+                width: calc(50% - 175px);
+            }
+
+            .project-card-image {
+                height: 220px;
+            }
+
+            .gallery-preview-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .promo-text {
@@ -1342,6 +1724,48 @@
             .promo-scroll-wrapper {
                 margin: 0 8px;
             }
+
+            .project-card {
+                width: 300px;
+                opacity: 0.6;
+                transform: scale(0.9);
+                filter: blur(0.5px) brightness(0.95);
+            }
+
+            .project-card.center {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0) brightness(1);
+            }
+
+            .projects-grid::before,
+            .projects-grid::after {
+                width: calc(50% - 150px);
+            }
+
+            .project-card-image {
+                height: 200px;
+            }
+
+            .projects-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .gallery-preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .gallery-preview-item {
+                height: 100px;
+            }
+
+            .featured-projects,
+            .gallery-cta-section {
+                padding: 70px 0;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1408,6 +1832,66 @@
                 grid-template-columns: 1fr;
             }
 
+            .projects-grid {
+                gap: 15px;
+            }
+
+            .project-card {
+                width: 280px;
+            }
+
+            .projects-grid::before,
+            .projects-grid::after {
+                width: calc(50% - 140px);
+            }
+
+            .projects-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .projects-nav-btn.prev {
+                left: 5px;
+            }
+
+            .projects-nav-btn.next {
+                right: 5px;
+            }
+
+            .project-card-image {
+                height: 180px;
+            }
+
+            .project-card-content {
+                padding: 15px;
+            }
+
+            .project-card-content h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+
+            .project-description {
+                font-size: 0.85rem;
+                margin-bottom: 12px;
+            }
+
+            .project-meta {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .project-date,
+            .project-duration {
+                font-size: 0.8rem;
+            }
+
+            .gallery-preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
             .hero {
                 padding-top: 90px;
             }
@@ -1438,7 +1922,7 @@
                 <ul id="nav-menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/#services">Services</a></li>
-                    <li><a href="/portfolio/">Portfolio</a></li>
+                    <li><a href="/projects/">Projects</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
                     <li><a href="/#why-us">Why Us</a></li>
                     <li><a href="/#contact">Contact</a></li>
@@ -1492,6 +1976,165 @@
                         Services</button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="featured-projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Featured Projects</h2>
+                <p class="section-subtitle">Explore our recent commercial and residential projects across Cape Town,
+                    showcasing our commitment to quality and excellence</p>
+            </div>
+
+            <div class="projects-wrapper">
+                <button class="projects-nav-btn prev" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="projects-nav-btn next" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="projects-grid">
+                    <!-- Le Coste Estate -->
+                    <div class="project-card animate-on-scroll" onclick="window.location.href='/projects/'">
+                        <div class="project-card-image">
+                            <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp"
+                                alt="Le Coste Estate Project">
+                            <div class="project-badge">2025</div>
+                        </div>
+                        <div class="project-card-content">
+                            <h3>Le Coste Estate</h3>
+                            <div class="project-meta">
+                                <div class="project-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2025</span>
+                                </div>
+                                <div class="project-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 Months</span>
+                                </div>
+                            </div>
+                            <p class="project-description">High-end lifestyle estate with comprehensive interior
+                                preparation
+                                and premium finishes</p>
+                            <a href="/projects/" class="project-link">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Haasendal Estate -->
+                    <div class="project-card animate-on-scroll" onclick="window.location.href='/projects/'">
+                        <div class="project-card-image">
+                            <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg"
+                                alt="Haasendal Estate Project">
+                            <div class="project-badge">2025</div>
+                        </div>
+                        <div class="project-card-content">
+                            <h3>Haasendal Estate</h3>
+                            <div class="project-meta">
+                                <div class="project-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2025</span>
+                                </div>
+                                <div class="project-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 Months</span>
+                                </div>
+                            </div>
+                            <p class="project-description">Extensive painting renovations across this multi-billion-Rand
+                                development in Brackenfell</p>
+                            <a href="/projects/" class="project-link">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- De Kuile Lifestyle Estate -->
+                    <div class="project-card animate-on-scroll" onclick="window.location.href='/projects/'">
+                        <div class="project-card-image">
+                            <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
+                                alt="De Kuile Lifestyle Estate Project">
+                            <div class="project-badge">2020-2023</div>
+                        </div>
+                        <div class="project-card-content">
+                            <h3>De Kuile Lifestyle Estate</h3>
+                            <div class="project-meta">
+                                <div class="project-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2020-2023</span>
+                                </div>
+                                <div class="project-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 Years</span>
+                                </div>
+                            </div>
+                            <p class="project-description">Full interior & exterior finishing for Balwin Properties
+                                apartment complex in Kuils River</p>
+                            <a href="/projects/" class="project-link">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bridgewater One -->
+                    <div class="project-card animate-on-scroll" onclick="window.location.href='/projects/'">
+                        <div class="project-card-image">
+                            <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater One Project">
+                            <div class="project-badge">2021</div>
+                        </div>
+                        <div class="project-card-content">
+                            <h3>Bridgewater One</h3>
+                            <div class="project-meta">
+                                <div class="project-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2021</span>
+                                </div>
+                                <div class="project-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 Months</span>
+                                </div>
+                            </div>
+                            <p class="project-description">Landmark mixed-use development with hotel, apartments and
+                                office
+                                towers in Century City</p>
+                            <a href="/projects/" class="project-link">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery CTA Section -->
+    <section class="gallery-cta-section">
+        <div class="gallery-cta-content">
+            <h2>See Our Work in Action</h2>
+            <p>Explore our comprehensive gallery showcasing stunning before & after transformations, completed projects,
+                and the quality craftsmanship that sets us apart</p>
+
+            <div class="gallery-preview-grid">
+                <div class="gallery-preview-item">
+                    <img src="/images/mold-after.jpg" alt="Mold Removal Project">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="/images/ceil 5.jpg" alt="Ceiling Repair">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="/images/cracks-after.jpg" alt="Crack Sealing">
+                </div>
+                <div class="gallery-preview-item">
+                    <img src="/images/exterior.jpg" alt="Exterior Painting">
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="window.location.href='/gallery/'">
+                <i class="fas fa-images"></i> View Full Gallery
+            </button>
         </div>
     </section>
 
@@ -1594,77 +2237,6 @@
                             <li>Custom designs for driveways, patios, and pathways</li>
                             <li>Interior and exterior tiling solutions</li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before/After Section -->
-    <section id="gallery" class="before-after">
-        <div class="container ba-container">
-            <h2 class="ba-title">Our Work Transformations</h2>
-            <p class="ba-subtitle">See how we've protected homes with our professional solutions and expert
-                craftsmanship</p>
-
-            <div class="comparison-grid">
-                <!-- Comparison 1 -->
-                <div class="comparison-card animate-on-scroll">
-                    <div class="comparison-header">
-                        <h4>Mold Remediation</h4>
-                    </div>
-                    <div class="comparison-images">
-                        <div class="after-img" style="background-image: url('/images/mold-before.jpg');"></div>
-                        <div class="before-img" style="background-image: url('/images/mold-after.jpg');"></div>
-                    </div>
-                    <div class="comparison-labels">
-                        <span class="label-after">After</span>
-                        <span class="label-before">Before</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 2 -->
-                <div class="comparison-card animate-on-scroll">
-                    <div class="comparison-header">
-                        <h4>Leak Blocking</h4>
-                    </div>
-                    <div class="comparison-images">
-                        <div class="after-img" style="background-image: url('/images/ceil 5.jpg');"></div>
-                        <div class="before-img" style="background-image: url('/images/ceil.jpg');"></div>
-                    </div>
-                    <div class="comparison-labels">
-                        <span class="label-after">After</span>
-                        <span class="label-before">Before</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 2 -->
-                <div class="comparison-card animate-on-scroll">
-                    <div class="comparison-header">
-                        <h4>Crack Sealing</h4>
-                    </div>
-                    <div class="comparison-images">
-                        <div class="after-img" style="background-image: url('/images/cracks-before.jpg');"></div>
-                        <div class="before-img" style="background-image: url('/images/cracks-after.jpg');"></div>
-                    </div>
-                    <div class="comparison-labels">
-                        <span class="label-after">After</span>
-                        <span class="label-before">Before</span>
-                    </div>
-                </div>
-
-                <!-- Comparison 3 -->
-                <div class="comparison-card animate-on-scroll">
-                    <div class="comparison-header">
-                        <h4>Exterior Protection</h4>
-                    </div>
-                    <div class="comparison-images">
-                        <div class="after-img" style="background-image: url('/images/exterior.jpg');"></div>
-                        <div class="before-img" style="background-image: url('/images/exterior 2.jpg');"></div>
-                    </div>
-                    <div class="comparison-labels">
-                        <span class="label-after">After</span>
-                        <span class="label-before">Before</span>
                     </div>
                 </div>
             </div>
@@ -1786,12 +2358,20 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
+                <p class="footer-membership">
+                    Kingmaths is a member of the <a href="/documents/BIBC Certificate.pdf" target="_blank"
+                        style="color: var(--gold); text-decoration: underline; font-weight: 600;">BIBC (Building
+                        Industry Bargaining Council)</a> under Oamari (Pty) Ltd
+                </p>
+                <p>&copy; <span id="currentYear"></span> Kingmaths Construction. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
@@ -1945,6 +2525,98 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Projects carousel functionality
+        const projectsGrid = document.querySelector('.projects-grid');
+        const projectCards = document.querySelectorAll('.project-card');
+        const prevBtn = document.querySelector('.projects-nav-btn.prev');
+        const nextBtn = document.querySelector('.projects-nav-btn.next');
+
+        if (projectsGrid && projectCards.length > 0) {
+            // Function to update centered item
+            function updateCenteredProjectItem() {
+                const containerRect = projectsGrid.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+
+                let closestItem = null;
+                let closestDistance = Infinity;
+
+                projectCards.forEach(card => {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCenter = cardRect.left + cardRect.width / 2;
+                    const distance = Math.abs(containerCenter - cardCenter);
+
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestItem = card;
+                    }
+                });
+
+                // Remove center class from all items
+                projectCards.forEach(card => card.classList.remove('center'));
+
+                // Add center class to closest item
+                if (closestItem) {
+                    closestItem.classList.add('center');
+                }
+            }
+
+            // Update on scroll
+            let scrollTimeout;
+            projectsGrid.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateCenteredProjectItem, 50);
+            });
+
+            // Navigation buttons
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    const currentCenter = document.querySelector('.project-card.center');
+                    if (currentCenter && currentCenter.previousElementSibling) {
+                        currentCenter.previousElementSibling.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    } else if (projectCards.length > 0) {
+                        // If no center or at first item, go to last item
+                        projectCards[projectCards.length - 1].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const currentCenter = document.querySelector('.project-card.center');
+                    if (currentCenter && currentCenter.nextElementSibling) {
+                        currentCenter.nextElementSibling.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    } else if (projectCards.length > 0) {
+                        // If no center or at last item, go to first item
+                        projectCards[0].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest',
+                            inline: 'center'
+                        });
+                    }
+                });
+            }
+
+            // Initial centered item
+            setTimeout(updateCenteredProjectItem, 100);
+
+            // Update on window resize
+            window.addEventListener('resize', () => {
+                setTimeout(updateCenteredProjectItem, 100);
+            });
+        }
     </script>
 </body>
 

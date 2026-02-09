@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commercial Portfolio | Kingmaths Construction Cape Town | Business & Industrial Projects</title>
-    <link rel="canonical" href="https://kingmaths.com/portfolio/">
+    <title>Commercial Projects | Kingmaths Construction Cape Town | Business & Industrial Projects</title>
+    <link rel="canonical" href="https://kingmaths.com/projects/">
     <meta name="description"
-        content="Commercial construction portfolio in Cape Town. View our business, industrial & commercial painting, waterproofing & renovation projects. ☎️ 065 982 3727">
+        content="Commercial construction projects in Cape Town. View our business, industrial & commercial painting, waterproofing & renovation projects. ☎️ 065 982 3727">
     <meta name="keywords"
         content="commercial construction Cape Town, business painting Cape Town, industrial waterproofing, commercial renovations Cape Town, office painting, warehouse construction, retail renovations Cape Town, commercial contractors Western Cape">
     <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kingmaths.com/portfolio/">
-    <meta property="og:title" content="Commercial Construction Portfolio | Kingmaths Cape Town">
+    <meta property="og:url" content="https://kingmaths.com/projects/">
+    <meta property="og:title" content="Commercial Construction Projects | Kingmaths Cape Town">
     <meta property="og:description"
         content="Expert commercial construction services. View our business & industrial projects.">
     <meta property="og:image" content="https://kingmaths.com/images/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Commercial Portfolio | Kingmaths Construction">
+    <meta name="twitter:title" content="Commercial Projects | Kingmaths Construction">
     <meta name="twitter:description" content="Professional commercial construction services in Cape Town.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,9 +36,9 @@
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      "name": "Kingmaths Construction Commercial Portfolio",
+      "name": "Kingmaths Construction Commercial Projects",
       "description": "Commercial and industrial construction projects completed by Kingmaths Construction in Cape Town",
-      "url": "https://kingmaths.com/portfolio/",
+      "url": "https://kingmaths.com/projects/",
       "provider": {
         "@type": "HomeAndConstructionBusiness",
         "name": "Kingmaths Construction",
@@ -397,35 +397,121 @@
             background: var(--gold);
         }
 
+        .portfolio-wrapper {
+            position: relative;
+        }
+
+        .portfolio-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--royal-blue);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(10, 46, 90, 0.3);
+            overflow: hidden;
+        }
+
+        .portfolio-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .portfolio-nav-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .portfolio-nav-btn:hover {
+            color: var(--royal-blue);
+            transform: translateY(-50%) scale(1.15) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .portfolio-nav-btn.prev {
+            left: 10px;
+        }
+
+        .portfolio-nav-btn.next {
+            right: 10px;
+        }
+
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
             gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            justify-items: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            padding: 40px 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 20px;
+        }
+
+        .portfolio-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .portfolio-grid::before,
+        .portfolio-grid::after {
+            content: '';
+            flex: 0 0 auto;
+            width: calc(50% - 300px);
         }
 
         .portfolio-card {
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1),
-                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1),
                 transform 1s cubic-bezier(0.215, 0.61, 0.355, 1),
-                opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+                box-shadow 1s cubic-bezier(0.215, 0.61, 0.355, 1),
+                filter 1s cubic-bezier(0.215, 0.61, 0.355, 1);
             position: relative;
-            width: 100%;
-            max-width: 450px;
-            opacity: 0;
-            transform: translateY(60px) scale(0.92);
-            will-change: transform, opacity, box-shadow;
+            flex: 0 0 auto;
+            width: 600px;
+            scroll-snap-align: center;
+            opacity: 0.4;
+            transform: scale(0.75);
+            filter: blur(3px) brightness(0.8);
+            will-change: transform, opacity, box-shadow, filter;
         }
 
-        .portfolio-card.visible {
+        .portfolio-card.center {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: scale(1);
+            filter: blur(0) brightness(1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 3px rgba(212, 175, 55, 0.4);
+        }
+
+        .portfolio-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.4);
+        }
+
+        .portfolio-card.center:hover {
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(212, 175, 55, 0.5);
         }
 
         .portfolio-card::before {
@@ -435,7 +521,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(10, 46, 90, 0.05));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 46, 90, 0.1));
             opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 1;
@@ -446,12 +532,8 @@
             opacity: 1;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(212, 175, 55, 0.3);
-        }
-
         .portfolio-image {
+            width: 100%;
             height: 250px;
             overflow: hidden;
             position: relative;
@@ -461,12 +543,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
             transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .portfolio-card:hover .portfolio-image img {
             transform: scale(1.1);
-            filter: brightness(1.1);
+            filter: brightness(1.05);
         }
 
         .portfolio-badge {
@@ -491,33 +574,61 @@
         }
 
         .portfolio-content {
-            padding: 25px;
+            padding: 20px 25px;
         }
 
         .portfolio-content h3 {
-            font-size: clamp(1.4rem, 3vw, 1.6rem);
-            margin-bottom: 15px;
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            margin-bottom: 10px;
             color: var(--royal-blue);
         }
 
         .portfolio-location {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 10px;
             color: var(--gold);
             font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .portfolio-date,
+        .portfolio-duration {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .portfolio-date i,
+        .portfolio-duration i {
+            color: var(--gold);
+            font-size: 1rem;
         }
 
         .portfolio-services {
-            margin: 20px 0;
+            margin: 12px 0;
         }
 
         .portfolio-services li {
-            margin-bottom: 12px;
-            padding-left: 25px;
+            margin-bottom: 8px;
+            padding-left: 22px;
             position: relative;
             list-style: none;
+            font-size: 0.9rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -767,10 +878,39 @@
             opacity: 0.7;
         }
 
+        .footer-membership {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-membership a {
+            transition: all 0.3s ease;
+        }
+
+        .footer-membership a:hover {
+            color: var(--light-gold) !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .portfolio-grid {
                 gap: 30px;
+            }
+
+            .portfolio-card {
+                width: 450px;
+            }
+
+            .portfolio-grid::before,
+            .portfolio-grid::after {
+                width: calc(50% - 225px);
+            }
+
+            .portfolio-image {
+                height: 220px;
             }
 
             .promo-text {
@@ -792,6 +932,38 @@
             /* Mobile Navigation */
             .menu-toggle {
                 display: flex;
+            }
+
+            .portfolio-nav-btn {
+                display: none;
+            }
+
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 25px;
+                overflow: visible;
+                scroll-snap-type: none;
+                padding: 0;
+            }
+
+            .portfolio-grid::before,
+            .portfolio-grid::after {
+                display: none;
+            }
+
+            .portfolio-card {
+                flex: none;
+                min-width: 100%;
+                width: 100%;
+                opacity: 1 !important;
+                transform: scale(1) !important;
+                filter: blur(0) brightness(1) !important;
+                scroll-snap-align: none;
+            }
+
+            .portfolio-card.center {
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             }
 
             nav ul {
@@ -931,6 +1103,15 @@
                 min-height: 65vh;
                 margin-top: 103px;
                 padding: 70px 15px 50px;
+            }
+
+            .portfolio-grid {
+                gap: 15px;
+            }
+
+            .portfolio-card {
+                flex: 0 0 90vw;
+                min-width: 90vw;
             }
 
             .portfolio-hero-content {
@@ -1115,7 +1296,7 @@
                 <ul id="nav-menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/#services">Services</a></li>
-                    <li><a href="/portfolio/">Portfolio</a></li>
+                    <li><a href="/projects/">Projects</a></li>
                     <li><a href="/gallery/">Gallery</a></li>
                     <li><a href="/#why-us">Why Us</a></li>
                     <li><a href="/#contact">Contact</a></li>
@@ -1168,134 +1349,184 @@
     <section id="portfolio" class="portfolio-section">
         <div class="container">
             <div class="section-title">
-                <h2>Our Commercial Portfolio</h2>
+                <h2>Our Commercial Projects</h2>
             </div>
 
+            <div class="portfolio-wrapper">
+                <button class="portfolio-nav-btn prev" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="portfolio-nav-btn next" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
 
+                <div class="portfolio-grid">
 
-            <div class="portfolio-grid">
-
-                <!-- Project 1 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp"
-                            alt="Le Coste Estate">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Le Coste Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Cape Town</span>
+                    <!-- Project 1 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="https://lecosteestate.co.za/wp-content/uploads/2024/10/show_home_gallery_october_4.webp"
+                                alt="Le Coste Estate">
+                            <div class="portfolio-badge">Completed</div>
                         </div>
-                        <p>The Kingmaths team provided comprehensive interior preparation for this high-end lifestyle
-                            estate featuring French-inspired design and premium finishes.</p>
+                        <div class="portfolio-content">
+                            <h3>Le Coste Estate</h3>
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Cape Town</span>
+                            </div>
+                            <div class="portfolio-meta">
+                                <div class="portfolio-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2025</span>
+                                </div>
+                                <div class="portfolio-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 Months</span>
+                                </div>
+                            </div>
+                            <p>The Kingmaths team provided comprehensive interior preparation for this high-end
+                                lifestyle
+                                estate featuring French-inspired design and premium finishes.</p>
 
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Complete wall preparation (skimming, sanding, priming)</li>
-                            <li>Top-grade wall and trim coatings</li>
-                            <li>Interior painting for homes and common areas</li>
-                            <li>Color consistency throughout the estate</li>
-                        </ul>
+                            <h4>Services Provided:</h4>
+                            <ul class="portfolio-services">
+                                <li>Complete wall preparation (skimming, sanding, priming)</li>
+                                <li>Top-grade wall and trim coatings</li>
+                                <li>Interior painting for homes and common areas</li>
+                                <li>Color consistency throughout the estate</li>
+                            </ul>
 
-                        <a href="https://lecosteestate.co.za/" class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg"
-                            alt="Haasendal Lifestyle Estate">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Haasendal Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Brackenfell</span>
+                            <a href="https://lecosteestate.co.za/" class="portfolio-link" target="_blank">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand development
-                            featuring homes, gardens and clubhouse spaces.</p>
-
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Interior and exterior painting renovations</li>
-                            <li>Silverstone and Greystone precinct refresh</li>
-                            <li>Color consistency management</li>
-                            <li>High-quality finishing throughout the estate</li>
-                        </ul>
-
-                        <a href="https://www.haasendalestate.co.za/" class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
-                </div>
 
-                <!-- Project 3 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
-                            alt="De Kuile Lifestyle Estate">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>De Kuile Lifestyle Estate</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kuils River</span>
+                    <!-- Project 2 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="https://static.wixstatic.com/media/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg/v1/fill/w_720,h_480,q_85,usm_0.66_1.00_0.01/689027_88460c0476d347b0a975903a94c565cc~mv2.jpg"
+                                alt="Haasendal Lifestyle Estate">
+                            <div class="portfolio-badge">Completed</div>
                         </div>
-                        <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior & exterior
-                            finishing and painting.</p>
+                        <div class="portfolio-content">
+                            <h3>Haasendal Estate</h3>
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Brackenfell</span>
+                            </div>
+                            <div class="portfolio-meta">
+                                <div class="portfolio-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2025</span>
+                                </div>
+                                <div class="portfolio-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 Months</span>
+                                </div>
+                            </div>
+                            <p>Kingmaths worked on extensive painting renovations across this multi-billion-Rand
+                                development
+                                featuring homes, gardens and clubhouse spaces.</p>
 
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Full interior finishing for modern apartments</li>
-                            <li>Skimming, priming and painting of apartments, corridors and lobbies</li>
-                            <li>Living space painting to high standards</li>
-                            <li>Contribution to estate's sleek, contemporary look</li>
-                        </ul>
+                            <h4>Services Provided:</h4>
+                            <ul class="portfolio-services">
+                                <li>Interior and exterior painting renovations</li>
+                                <li>Silverstone and Greystone precinct refresh</li>
+                                <li>Color consistency management</li>
+                                <li>High-quality finishing throughout the estate</li>
+                            </ul>
 
-                        <a href="https://balwin.co.za/developments/de-kuile" class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater One">
-                        <div class="portfolio-badge">Completed</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Bridgewater One</h3>
-                        <div class="portfolio-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Century City</span>
+                            <a href="https://www.haasendalestate.co.za/" class="portfolio-link" target="_blank">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <p>Kingmaths served as a painting sub-contractor for this landmark mixed-use development with
-                            hotel, apartments and office towers.</p>
-
-                        <h4>Services Provided:</h4>
-                        <ul class="portfolio-services">
-                            <li>Full interior and exterior finishing</li>
-                            <li>Skimming, sanding, priming and premium coating</li>
-                            <li>Painting on walls, columns and ceilings</li>
-                            <li>On-time completion of high-quality painting and glazing</li>
-                        </ul>
-
-                        <a href="https://www.linkedin.com/posts/wbho-construction_wbho-capetown-bridgewater-activity-6834076545917693952-GwQR"
-                            class="portfolio-link" target="_blank">
-                            View Project Details <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
+
+                    <!-- Project 3 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="https://images.ctfassets.net/476tckqu6rvb/7sVryjxWP0gs6GykVjnfSF/3f60c42e43a00f32e9be7594c33076b4/Balwin_Properties_x_De_Kuile-35.jpg"
+                                alt="De Kuile Lifestyle Estate">
+                            <div class="portfolio-badge">Completed</div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>De Kuile Lifestyle Estate</h3>
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kuils River</span>
+                            </div>
+                            <div class="portfolio-meta">
+                                <div class="portfolio-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2020-2023</span>
+                                </div>
+                                <div class="portfolio-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>3 Years</span>
+                                </div>
+                            </div>
+                            <p>On this new Balwin Properties apartment complex, Kingmaths performed full interior &
+                                exterior
+                                finishing and painting.</p>
+
+                            <h4>Services Provided:</h4>
+                            <ul class="portfolio-services">
+                                <li>Full interior finishing for modern apartments</li>
+                                <li>Skimming, priming and painting of apartments, corridors and lobbies</li>
+                                <li>Living space painting to high standards</li>
+                                <li>Contribution to estate's sleek, contemporary look</li>
+                            </ul>
+
+                            <a href="https://balwin.co.za/developments/de-kuile" class="portfolio-link" target="_blank">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src="/images/bridgewater one/1629370817886.jpeg" alt="Bridgewater One">
+                            <div class="portfolio-badge">Completed</div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>Bridgewater One</h3>
+                            <div class="portfolio-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Century City</span>
+                            </div>
+                            <div class="portfolio-meta">
+                                <div class="portfolio-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>2021</span>
+                                </div>
+                                <div class="portfolio-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 Months</span>
+                                </div>
+                            </div>
+                            <p>Kingmaths served as a painting sub-contractor for this landmark mixed-use development
+                                with
+                                hotel, apartments and office towers.</p>
+
+                            <h4>Services Provided:</h4>
+                            <ul class="portfolio-services">
+                                <li>Full interior and exterior finishing</li>
+                                <li>Skimming, sanding, priming and premium coating</li>
+                                <li>Painting on walls, columns and ceilings</li>
+                                <li>On-time completion of high-quality painting and glazing</li>
+                            </ul>
+
+                            <a href="https://www.linkedin.com/posts/wbho-construction_wbho-capetown-bridgewater-activity-6834076545917693952-GwQR"
+                                class="portfolio-link" target="_blank">
+                                View Project Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -1450,12 +1681,20 @@
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Kingmaths Construction. All rights reserved.</p>
+                <p class="footer-membership">
+                    Kingmaths is a member of the <a href="/documents/BIBC Certificate.pdf" target="_blank"
+                        style="color: var(--gold); text-decoration: underline; font-weight: 600;">BIBC (Building
+                        Industry Bargaining Council)</a> under Oamari (Pty) Ltd
+                </p>
+                <p>&copy; <span id="currentYear"></span> Kingmaths Construction. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Set current year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.getElementById('nav-menu');
@@ -1594,6 +1833,102 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Portfolio carousel functionality (desktop only)
+        if (window.innerWidth > 768) {
+            const portfolioGrid = document.querySelector('.portfolio-grid');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            const prevBtn = document.querySelector('.portfolio-nav-btn.prev');
+            const nextBtn = document.querySelector('.portfolio-nav-btn.next');
+
+            if (portfolioGrid && portfolioCards.length > 0) {
+                // Function to update centered item
+                function updateCenteredPortfolioItem() {
+                    const containerRect = portfolioGrid.getBoundingClientRect();
+                    const containerCenter = containerRect.left + containerRect.width / 2;
+
+                    let closestItem = null;
+                    let closestDistance = Infinity;
+
+                    portfolioCards.forEach(card => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + cardRect.width / 2;
+                        const distance = Math.abs(containerCenter - cardCenter);
+
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestItem = card;
+                        }
+                    });
+
+                    // Remove center class from all items
+                    portfolioCards.forEach(card => card.classList.remove('center'));
+
+                    // Add center class to closest item
+                    if (closestItem) {
+                        closestItem.classList.add('center');
+                    }
+                }
+
+                // Update on scroll
+                let scrollTimeout;
+                portfolioGrid.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(updateCenteredPortfolioItem, 50);
+                });
+
+                // Navigation buttons
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        const currentCenter = document.querySelector('.portfolio-card.center');
+                        if (currentCenter && currentCenter.previousElementSibling) {
+                            currentCenter.previousElementSibling.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        } else if (portfolioCards.length > 0) {
+                            // If no center or at first item, go to last item
+                            portfolioCards[portfolioCards.length - 1].scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        }
+                    });
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        const currentCenter = document.querySelector('.portfolio-card.center');
+                        if (currentCenter && currentCenter.nextElementSibling) {
+                            currentCenter.nextElementSibling.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        } else if (portfolioCards.length > 0) {
+                            // If no center or at last item, go to first item
+                            portfolioCards[0].scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                                inline: 'center'
+                            });
+                        }
+                    });
+                }
+
+                // Initial centered item
+                setTimeout(updateCenteredPortfolioItem, 100);
+
+                // Update on window resize
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768) {
+                        setTimeout(updateCenteredPortfolioItem, 100);
+                    }
+                });
+            }
+        }
     </script>
 </body>
 
